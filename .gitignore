@@ -1,0 +1,11 @@
+*.input
+*.properties
+*.tsv
+*.aux
+*.bbl
+*.blg
+*.log
+*.synctex.gz
+.RData
+.Rhistory
+.DS_Store
