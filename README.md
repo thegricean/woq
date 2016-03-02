@@ -63,3 +63,11 @@ Good question. Generally: participants will see some utterance with a quantifier
 
 We should talk about which subset of these (and possibly others?) we would want to test.
 
+
+Random notes
+==========================
+
+- ask which languages subjects speak, and what the language is in which they count 
+	- many folks out there [beyond the US-Turkers] grew up multilingual (!)
+- consider a shiny app for data visualization once the data has sufficient mass
+- accompany the raw data of subjects' choices with additional information about language, family and semantic/syntactic peculiarities relevant to the domain of number quantification (e.g., language doesn't have words for numbers that are not prime, use of negation is a cardinal sin, everybody always ever exaggerates, ...)
