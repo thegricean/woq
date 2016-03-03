@@ -62,15 +62,15 @@ function get5Points(n_total,n_target,tcolor,ocolor,w,h,radius) {
 
   var pcnt = 0;
 
-  points.push({x:100+uniform(-80,80),y:100+uniform(-60,60),color:pointcolors[pcnt]});
+  points.push({x:100+uniform(-70,70),y:100+uniform(-60,60),color:pointcolors[pcnt]});
   pcnt++;
-  points.push({x:300+uniform(-80,80),y:100+uniform(-60,60),color:pointcolors[pcnt]});
+  points.push({x:300+uniform(-70,70),y:100+uniform(-60,60),color:pointcolors[pcnt]});
   pcnt++;
-  points.push({x:500+uniform(-80,80),y:100+uniform(-60,60),color:pointcolors[pcnt]});
+  points.push({x:500+uniform(-70,70),y:100+uniform(-60,60),color:pointcolors[pcnt]});
   pcnt++;
-  points.push({x:150+uniform(-100,100),y:300+uniform(-60,60),color:pointcolors[pcnt]});
+  points.push({x:150+uniform(-90,90),y:300+uniform(-60,60),color:pointcolors[pcnt]});
   pcnt++;
-  points.push({x:350+uniform(-100,100),y:300+uniform(-60,60),color:pointcolors[pcnt]});
+  points.push({x:350+uniform(-90,90),y:300+uniform(-60,60),color:pointcolors[pcnt]});
 
   return points;
 }
