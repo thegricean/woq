@@ -255,7 +255,7 @@ function make_slides(f) {
 	    console.log(this.stim);      
 
     	//var contextsentence = "How would you describe this situation? Please provide at least two expressions (can be more than one word each) to fill in the blank.";
-      var blanksentence = "How many dots are <strong>"+this.stim.color_target.colorword+"</strong>? <p> Please provide at least two expressions. An expression can be more than one word long.";
+      var blanksentence = 'How many dots are <strong><font color="'+this.stim.color_target.color+'">'+this.stim.color_target.colorword+"</font></strong>? <p> Please provide at least two expressions. An expression can be more than one word long.";
     	//$("#contextsentence").html(contextsentence);
       $(".blanksentence").html(blanksentence);
       draw("situation",this.stim.n_total,this.stim.n_target,this.stim.color_target.color,this.stim.color_other.color);          
