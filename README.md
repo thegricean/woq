@@ -71,3 +71,12 @@ Random notes
 	- many folks out there [beyond the US-Turkers] grew up multilingual (!)
 - consider a shiny app for data visualization once the data has sufficient mass
 - accompany the raw data of subjects' choices with additional information about language, family and semantic/syntactic peculiarities relevant to the domain of number quantification (e.g., language doesn't have words for numbers that are not prime, use of negation is a cardinal sin, everybody always ever exaggerates, ...)
+- how do we implement the experiments in different languages? 
+	- are we going to implement Arabic in JS? as in: you or me writing the thing with Arabic text? hope not!
+	- better: provide basic functionality, i.e., a JS-script for the experiment with, say, JSON file for language-specific input?
+	- but then: Arabic, for instance, is written right-to-left; different font-encodings...
+- where to host the experiments?
+- how to recruit and pay subjects?
+	- and if we pay them, how do we get reimbursed?
+	- or should we rely on friends and Facebook, Twitter and such? could work as well?
+- if we don’t recruit via MTurk, the experiment should probably be running on a server and record the data to a local data base, not send to MTurk
