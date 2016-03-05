@@ -85,6 +85,9 @@ head(gathered)
 #gathered = as.factor(as.character(gathered))
 #gathered = gathered[order(gathered[,c("Count")],decreasing=T),]
 gathered$n_total = as.factor(as.character(gathered$n_total))
+length(unique(gathered$Utterance))
+
+utts_howmany = unique(gathered$Utterance)
 
 ggplot(gathered, aes(x=Utterance,fill=n_total)) +
   stat_count(position="dodge") +

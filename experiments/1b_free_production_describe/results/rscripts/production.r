@@ -85,6 +85,18 @@ head(gathered)
 #gathered = as.factor(as.character(gathered))
 #gathered = gathered[order(gathered[,c("Count")],decreasing=T),]
 gathered$n_total = as.factor(as.character(gathered$n_total))
+length(unique(gathered$Utterance))
+
+utts_describe = unique(gathered$Utterance)
+length(c(utts_describe,utts_howmany))
+length(unique(c(utts_describe,utts_howmany)))
+unique_utts_total = unique(c(utts_describe,utts_howmany))
+common_utts = intersect(utts_describe,utts_howmany)
+write.table(unique_utts_total,file="data/unique_utts_exps1a1b.txt",row.names=F,quote=F,col.names=F)
+write.table(utts_describe,file="data/unique_utts_exp1b_describe.txt",row.names=F,quote=F,col.names=F)
+write.table(utts_howmany,file="data/unique_utts_exp1a_howmany.txt",row.names=F,quote=F,col.names=F)
+write.table(sort(common_utts),file="data/utts_common_to_exps1a1b.txt",row.names=F,quote=F,col.names=F)
+
 
 ggplot(gathered, aes(x=Utterance,fill=n_total)) +
   stat_count(position="dodge") +
