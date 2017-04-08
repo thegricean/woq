@@ -26,13 +26,13 @@ Do only black & white!
 
 3. English production with sentence frame and partial uncertainty (gray out 1/4, 1/2, 3/4)
 
-### Comprehension:**
+### Comprehension
 
 1. best guess: give them a slider from 0 - (n) and show the number of dots they chose to be blue
 2. like 1., but min/max estimate
 3. min/max & best guess
 
-### Extra notes:
+### Extra notes
 
 - create functionality for generating pen-and-paper versions of the computer-based versions (ie, use same algorithm for sampling) for people who are taking this to the jungle -- this is another reason to have just black-and-white versions, no colors
 
@@ -64,6 +64,8 @@ Regardless of the actual reference sets we agree on, there are some issues with 
 
 Methodological considerations: interpretation
 =============================================
+
+We have now discarded most of these interpretation measures and will pilot only the ones mentioned above.
 
 Goal
 ----
