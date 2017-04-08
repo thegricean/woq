@@ -11,6 +11,36 @@ The plan
 
 -   figure out a general format that the data should be stored in (a csv file of some sort with certain mandatory column names and content presumably); create github repo where everything will be stored, including documentation, instructions, (anonymized) data, analysis scripts
 
+Immediate next steps
+====================
+
+### Production
+
+Do only black & white!
+
+1. Put together an MTurk survery targeted at native speakers of languages that aren't English and have them produce sentence frames like "X of the dots are blue" after a few practice trials with image-utterance pairs. Then ask: "is there a similar construction in your language? If so, what is it?" + comment box
+	1. Translate English sentence
+	2. Is there a construction in your language? If yes, what? If no, what are all the different constructions?
+
+2. English production with sentence frame -- at least one completion; up to three	
+
+3. English production with sentence frame and partial uncertainty (gray out 1/4, 1/2, 3/4)
+
+### Comprehension:**
+
+1. best guess: give them a slider from 0 - (n) and show the number of dots they chose to be blue
+2. like 1., but min/max estimate
+3. min/max & best guess
+
+### Extra notes:
+
+- create functionality for generating pen-and-paper versions of the computer-based versions (ie, use same algorithm for sampling) for people who are taking this to the jungle -- this is another reason to have just black-and-white versions, no colors
+
+- best storage?
+
+- make sure to write experiment results to server (for non-English experiments)
+
+
 Methodological considerations: production
 =========================================
 
