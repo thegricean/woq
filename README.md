@@ -18,11 +18,17 @@ Immediate next steps
 
 Do only black & white!
 
-1. Put together an MTurk survery targeted at native speakers of languages that aren't English and have them produce sentence frames like "X of the dots are blue" after a few practice trials with image-utterance pairs. Then ask: "is there a similar construction in your language? If so, what is it?" + comment box
+1. English production with sentence frame -- at least one completion; up to three
+	- keep initial instructions as they are
+	- question on each trial: 'How would you describe the number of black/white dots to someone who has not seen the picture? Please provide at least one description. A description can be more than one word long, but doesn't have to be. Please avoid the use of number expressions."
+	- use sentence fragment "____ of the dots are black/white."
+	
+
+2. Put together an MTurk survey targeted at native speakers of languages that aren't English and have them produce sentence frames like "X of the dots are blue" after a few practice trials with image-utterance pairs. Then ask: "is there a similar construction in your language? If so, what is it?" + comment box
 	1. Translate English sentence
 	2. Is there a construction in your language? If yes, what? If no, what are all the different constructions?
 
-2. English production with sentence frame -- at least one completion; up to three	
+
 
 3. English production with sentence frame and partial uncertainty (gray out 1/4, 1/2, 3/4)
 
