@@ -249,8 +249,6 @@ function make_slides(f) {
 
     start: function () {
       $(".err").hide();
-      //$("#word1").val("");
-      //$("#word2").val("");
     },
 
     present_handle: function (stim) {
@@ -258,25 +256,32 @@ function make_slides(f) {
       this.stim = stim;
       console.log(this.stim);
 
-      var blanksentence = "How would you describe the <strong>number of <span style='color:" + this.stim.color_target.color + "; background:lightgrey'>" + this.stim.color_target.colorword + "</span> dots</strong> to someone who has not seen the picture? <p> Please provide at least two descriptions. A description can be more than one word long, but doesn't have to be.";
+      var blanksentence = "How would you describe the <strong>number of <span style='color:" + this.stim.color_target.color + "; background:lightgrey'>" + this.stim.color_target.colorword + "</span> dots</strong> to someone who has not seen the picture? <p> Please provide at least one description. A description can be more than one word long, but doesn't have to be.";
       //$("#contextsentence").html(contextsentence);
       $(".blanksentence").html(blanksentence);
+      $(".color-word").attr("style", "color:" + this.stim.color_target.color + "; background:lightgrey");
+      $(".color-word").text(this.stim.color_target.colorword);
       draw("situation", this.stim.n_total, this.stim.n_target, this.stim.color_target.color, this.stim.color_other.color);
     },
 
-    // This is the "continue" button to be used.
+    // This is the "Continue" button.
     button: function () {
       var word1 = $(".word1").val();
       var word2 = $(".word2").val();
+      var word3 = $(".word3").val();
       console.log(word1);
-      this.stim.response = [word1, word2];
-      if (word1.length > 0 && word2.length > 0) {
+      // Should we keep the empty responses as empty columns, or only add the responses that actually have contents?
+      this.stim.response = [word1, word2, word3];
+      // This means the answers were entered correctly. At least one would need to be filled
+      if (word1.length > 0 || word2.length > 0 || word3.length > 0) {
         $(".err").hide();
         this.log_responses();
+        // Clear them to prepare for the next round of question.
         $(".word1").val("");
         $(".word2").val("");
+        $(".word3").val("");
         _stream.apply(this); //use exp.go() if and only if there is no "present" data.
-      } else {
+      } else { // Some of the blanks are left empty.
         $(".err").show();
       }
     },
@@ -337,12 +342,15 @@ function make_slides(f) {
 /// init ///
 function init() {
 
+  // This function is called when the sequence of experiments is generated, further down in the init() function.
   function makeStim(i, n) {
     // Make it only black and white
     var colors = ([{color: "#000000", colorword: "black"}, {color: "#FFFFFF", colorword: "white"}]);
     var shuffled = _.shuffle(colors);
     color_target = shuffled[0];
     color_other = shuffled[1];
+
+    // console.log("makeStim is called. The target color is " + color_target.colorword + ". The other color is " + color_other.colorword);
 
     return {
       "n_total": n,
