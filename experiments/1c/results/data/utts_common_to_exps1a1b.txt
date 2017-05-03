@@ -1,0 +1,104 @@
+10
+12
+17
+2
+21
+3
+4
+5
+50
+6
+7
+8
+9
+a bunch
+a couple
+a dozen
+a few
+a little less than half
+a lot
+about a dozen
+about a quarter
+about a third
+about half
+about half of the dots
+about half the dots are blue
+about one third
+all
+all blue
+all but one
+all dots are black
+all of them
+almost all
+almost half
+almost none
+around sixty percent
+eight
+eighty percent
+eleven
+every one
+few
+five
+five of them
+four
+four black dots
+four dots
+fourteen
+half
+half the dots are blue
+less than black
+less than blue
+less than half
+less than orange
+less than red
+little more than half
+lots of black dots
+majority
+many
+many blue dots
+many orange dots
+many red dots
+minority
+more black than red
+more than black
+more than black dots
+more than blue
+more than half
+more than orange
+more than red
+most
+most of the dots
+most of the dots are red
+most of them
+mostly black
+mostly black dots
+nine
+no black dots
+none
+not many
+one
+only one
+only three
+plenty
+quite a few
+seven
+several
+several red dots
+singular
+six
+sixty percent
+some
+ten
+there are 5 orange dots.
+there are five red dots
+there are no black dots
+three
+three orange dots
+too many to count
+twelve
+two
+two of them
+very few
+very many
+zero
+zero black dots

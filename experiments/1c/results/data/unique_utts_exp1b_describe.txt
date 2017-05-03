@@ -1,0 +1,549 @@
+18
+2
+fewer than red
+1
+3
+many
+0
+fewer than orange
+4
+all blue
+5
+more than orange
+fewer than blue
+7
+only orange dots
+majority
+five
+few
+half
+zero
+rare
+most
+about half
+less than half
+quite a few
+a few
+three
+vast majority
+more than half
+one
+all
+a little less than half
+almost all
+single
+a couple
+spaced out
+handful
+alot
+red
+none
+tons 
+all red but one
+half and half
+10
+scarce
+only one
+lots
+more than blue
+8
+ten
+equal
+very few
+singular
+some
+two
+eight
+all of them
+four
+small amount
+12
+dozen
+23
+6
+couple
+not very many. 
+about the same as blue
+one more than blue
+cinco
+many more than black 
+all but one
+same as black
+tri
+nine
+a lot
+all except one
+a third
+twelve
+almost as many as black
+most of them
+little more than half
+scattered
+mostly grouped together
+there are ten dots
+there are two of them
+many more than number of black dots
+scattered amongst red dots
+scattered among orange dots
+there are many red dots
+there are many orange dots
+there are many more black dots than red dots
+there are eight blue dots
+there is only one orange dot
+there are no black dots
+there are more red dots than black dots
+there are four blue dots
+there is only one blue dot
+there are five black dots
+there is a large number of red dots
+there is a large number of blue dots
+there are no orange dots
+there are few blue dots
+there is a moderate amount of red dots
+there are three red dots
+there is one black dot
+there&quotechars a bunch
+there&quotechars a ton
+a ton
+a good amount
+tons
+a bunch
+bunch
+13 blue dots
+mostly black dots
+5 red dots
+5 blue dots
+9 red dots
+2 large black dots
+many red dots
+many orange dots
+3 red dots
+no red dots
+many small blue dots
+several red dots
+many blue dots
+8 red dots
+3 black dots
+10 blue dots
+3 orange dots
+2 red dots
+7 red dots
+20 blue dots
+4 black dots
+many black dots
+one red dot
+too many to count
+about twenty mixed in with a larger number of black dots
+seven in a sea of small red dots
+few compared to orange dots
+many more black than orange
+six
+less than blue
+most of the image is small orange dots
+large number of small black dots
+large number of black dots
+no orange dots
+few red dots in a sea of blue
+many small red dots
+all dots are red
+10 red dots
+mostly orange
+about a third
+eighty percent
+40 percent
+20 percent
+more blue than orange
+more black than red
+mostly black
+a small amount
+mostly red
+four black dots
+all red dots
+seven
+medium
+17
+15
+about a dozen
+more than 12
+25
+many 
+minority
+less
+half of the picture
+almost all the picture
+most of the dots
+half of the dots
+about seventy percent of the dots
+a handful
+about half of the dots
+about thiry percent of the dots
+nonexistant
+there are no red dots
+there are 15 red dots
+there are four large red dots
+there is one orange dot
+there are four orange dots
+there are no blue dots in the picture
+the picture is about half blue dots
+all but one dot is blue
+the orange dots are equal to the black
+there are all but 3 orange dots
+there are two more blue dots
+there are five red dots
+there are 24 blue dots
+there are 15 black dots
+all of the dots are orange
+about half of the picture is black dots
+about half the dots are blue
+there are 7 orange dots
+there are 8 black dots
+there are 5 black dots
+all but 6 are black
+the majority of the dots are orange
+there are 3 blue dots
+there are two orange dots
+there are five orange dots.
+there are a lot of blue dots -- too many for me to count without getting a headache.
+there are 7 orange dots.
+there are 12 orange dots.
+there are 5 orange dots.
+there are four blue dots.
+there are no red dots in this picture.
+there are a lot of black dots in this picture.
+there are four red dots in this picture.
+i think there are 18 blue dots in this picture
+there are 9 red dots on this picture.
+there are four orange dots in this picture.
+there are a lot of red dots in this picture -- more than i can count.
+there are 5 red dots in this picture.
+there are three black dots in this picture.
+in this picture
+there are a lot of red dots in this picture.
+there are quite a few orange dots in this picture interspered with other dots.
+there are two orange dots in this picture.
+there are 8 orange dots in this picture.
+there are no blue dots in this picture.
+there are several orange dots in this picture interspered randomly with other dots.
+there are a ton of black dots in this picture. 
+there are many orange dots in this picture.
+there are a lot of orange dots in this picture
+equal to orange dots
+about half of the total
+equal to blue
+2 
+small
+zero black dots
+50
+140
+four dots
+six black dots
+three orange dots
+150 or so red dots
+120 or so black dots
+4 black dots. 
+almost 150 red dots
+30 red dots
+maybe 12 orange dots
+lots less orange than blue dots.
+6 red dots
+maybe 25 black dots
+maybe 10 orange dots
+maybe 15 red dots
+about 8 blue dots
+5 black dots
+only a few orange dots
+4 orange dots
+maybe 20 blue dots
+2 black dots
+very many
+the vast majority
+there are ten
+there are three of them
+fifty percent
+there are six
+fourteen
+about fifty percent
+fifty percent of them are black
+about fifty percent are red
+nineteen
+a dozen
+half are blue
+about one third
+abundant
+singlualr
+several
+awful lot
+greater than blue dots
+less than blue dots
+dispersed irratically
+fewer than orange dots
+dispersed unevenly 
+more than blue dots
+more than orange 
+dispersed evenly
+more than orange dots
+more than black dots
+very few compared to red
+equal to black 
+more than red
+more than black
+less than red
+less than black
+about the same as red
+equal number
+sporadic
+every
+intertwined
+big
+mixed in with blue
+alot more than black
+2 handsful
+20%
+many more than black
+not alot
+less than orange
+even
+not many
+plenty
+great amount
+nonexistent 
+only color there
+predominant color
+almost none
+very small amount
+21
+half of 10
+much less than blue
+a couple less than blue
+one less than the sides of a die
+twice as many as black plus one
+3x3
+both equal 10
+about same as blue
+lonel]
+similar to red
+about same as red
+zilch
+one more than orange
+almost 10
+as many as red
+a whole bunch
+every one
+a quarter or so
+as many as blue
+about a quarter
+eleven
+fewer than number of red dots
+equal to number of blue dots
+fewer than number of blue dots
+all of them are orange
+there is one fewer than the number of red dots
+large number of orange dots overall
+far fewer than number of orange dots
+there are about as many red dots as blue dots
+there are many more orange dots than black dots
+there are slightly more orange dots than black dots
+there is a moderate number of black dots
+blue dots greatly outnumber orange dots
+orange dots are vastly outnumbered by blue dots
+there are only red dots
+there is a moderate number of red dots
+blue dots outnumber red dots four to one
+there is one less blue dot than red dots
+there are three fewer blue dots than orange dots
+all of the dots are black
+most of the dots are red
+blue dots outnumber red dots
+there are only blue dots
+blue dots are greatly outnumbered by red dots
+there are slightly more red dots than blue dots
+there is one more red dot than black dots
+there is a black dot
+there&quotechars more than blue
+there&quotechars a whole lot
+nope
+a little
+bunches
+no
+more
+hella lot
+too many
+dispersed throughout with orange dots
+5 large red dots
+5 medium sized blue dots among several orange dots
+9 red dots and one black dot
+2 black dots and 3 red dots
+many red dots dispersed with even more black dots
+many orange dots dispersed among several black dots
+3 red dots surrounded by black dots
+zero red dots
+a lot of blue dots
+several red dots among many blue dots
+many blue dots dispersed evenly among many red dots
+8 large red dots
+3 medium sized black dots
+10 blue dots and many orange dots
+many blue dots surrounded by fewer red dots
+3 large orange dots
+2 red dots among 8 blue dots
+a handful of blue dots among many orange dots
+7 red dots surrounded by many blue dots
+20 blue medium sized blue dots
+many blue dots surrounding a few red dots
+4 large black dots
+many black dots surrounding a few orange dots
+one large red dot
+equal to number of red dots
+small and all over the place
+small and spaced out
+few black dots widely spaced among red dots
+no other dots
+spread throughout
+only three
+more black dots than orange
+hardly any red dots
+lone black dot and four orange
+two black
+five black dots
+very small and scattered throughout the image
+eight blue
+small and scattered
+three red
+more black dots
+cover image
+about half are red half black
+fewer red dots than blue
+all but 4 dots are orange
+all but 3 dots are black
+about the same number red dots as black
+about half as many blue dots as red
+as many red dots as black
+about half as many red dots as blue
+four black dots out of five
+about the same number black dots as red
+the exact same number blue dots as orange
+two out of five are blue
+1 out of five is red
+roughly the same number red as blue
+sixty percent
+around sixty percent
+around 80 percent
+around 20 percent
+all but one dot are black
+about 90 percent red
+all but two 
+all dots are black
+no black dots
+averge
+less than a dozen
+9
+less than 20
+about 25
+about 2 dozen
+less than 10
+dos
+a vast amount
+all the dots
+less than half of the dots
+there are only black dots
+the number of blue dots far outweight the number of red
+four out of five dots are red
+there is 1/5 orange dots
+there are 2/5ths orange dots
+there are only orange dots and no blue dots
+the blue dots take up about half of the space
+there is mostly blue dots
+there orange dots occupy half of the picture
+all are orange but three
+there are six blue dots
+all five of the dots are red
+there are fewer blue dots
+15/25 are black dots
+there are 10 orange dots
+there are a lot of black dots
+there are lots of blue dots
+7/10 dots are red
+there are few black dots
+there are fewer black dots
+the picture is mostly blue dots
+lots of black dots
+all but 19 are orange
+there are 3/5 blue dots
+2/5 are orange
+none of the dots are red
+three of the orange dots are on the top of the square
+the blue dots appear to be interspered randomly and bountifully on the picture.
+4 of the orange dots are on the left side
+there are a lot of orange dots which seem to have been placed randomly in the picture.
+2 orange dots are on the left
+there is one blue dot on the left side and three blue dots on the right side.
+i cannot see any red dots at all.
+there are so many black dots in this picture that i cannot count them.
+there are 2 red dots on the left side of the picture
+but i cannot be certain.'
+there are so many black dots in this picture that i would not be able to count them.
+there are 9 red dots covering almost all areas of this picture.
+the four red dots in this picture are very large.
+there are many small red dots covering most parts of the picture.
+the 5 red dots in this picture appear randomly in the picture.
+the three black dots in this picture are all in the middle or left side of the picture.
+there is just one blue dot.'
+there are too many red dots in this picture for me to be able to count.
+the many orange dots are very small.
+the two orange dots in this picture are towards the upper left hand corner.
+the 8 orange dots in this picture seem to be placed randomly throughout it.
+i cannot see a single blue dot in this picture.
+the many orange dots in this picture are quite small.
+i&quotecharm not sure how many black dots are in this picture
+the dots show up randomly in the picture.
+mixed with other dots.'
+overwhelming
+all except 2
+substantial amount
+average
+almost half
+a large amount
+far fewer than red
+fair amount
+all except two
+total
+non-existent
+a little less than blue
+many more than blue
+3 more than blue
+a couple more than red
+lots more than black
+a third more than red dots
+two less than red
+a few black dots there too
+twice as many blue dots
+a few less black dots than orange
+porbably 20 orange dots
+less than half as many blue dots
+only a quarter of how many orange dots there are
+more dots than black
+about the same as black
+a lot less than black dots
+many  more than orange 
+only five black dots
+a lot less orange dots than blue dots
+3 more orange dots than blue
+the only color dots
+only 1 less than orange
+overwhelmingly 
+there are four of them
+roughly fifty percent 
+there are fourteen of them
+roughly fifty percent
+about half are red
+there are three
+two of them
+ten of them
+five of them
+nineteen of them
+half the dots are blue
+seven are blue
+one third are blue
+five blue dots
+one dot is red
+quite a bit
