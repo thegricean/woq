@@ -171,6 +171,7 @@ function getPoints(n_total,n_target,tcolor,ocolor,w,h,radius) {
 
 function draw(id,n_total,n_target,tcolor,ocolor){
   var canvas = document.getElementById(id);
+  canvas.style.background = "lightgrey"; // Useful in the case of black/white colors.
   if (canvas.getContext){
     var ctx = canvas.getContext("2d");
     canvas.width = 600;
@@ -254,18 +255,18 @@ function make_slides(f) {
 	    this.stim = stim;
 	    console.log(this.stim);      
 
-    	//var contextsentence = "How would you describe this situation? Please provide at least two expressions (can be more than one word each) to fill in the blank.";
-      var blanksentence = 'How would you describe the <strong>number of <font color="'+this.stim.color_target.color+'">'+this.stim.color_target.colorword+"</font> dots</strong> to someone who has not seen the picture? <p> Please provide at least two descriptions. A description can be more than one word long, but doesn't have to be.";
+      var blanksentence = "How would you describe the <strong>number of <span style='color:"+this.stim.color_target.color+"; background:lightgrey'>"+this.stim.color_target.colorword+"</span> dots</strong> to someone who has not seen the picture? <p> Please provide at least two descriptions. A description can be more than one word long, but doesn't have to be.";
     	//$("#contextsentence").html(contextsentence);
       $(".blanksentence").html(blanksentence);
       draw("situation",this.stim.n_total,this.stim.n_target,this.stim.color_target.color,this.stim.color_other.color);          
 	   },
 
+    // This is the "continue" button to be used.
   	button : function() {
       var word1 = $(".word1").val();
       var word2 = $(".word2").val(); 
       console.log(word1);
-      this.stim.response = [word1,word2];     
+      this.stim.response = [word1,word2];
       if (word1.length > 0 && word2.length > 0) {
          $(".err").hide();
          this.log_responses();
@@ -332,10 +333,9 @@ function make_slides(f) {
 function init() {
 
   function makeStim(i,n) {
-    var acolor = _.shuffle([{color:"#0066FF",colorword:"blue"},{color:"#000000",colorword:"black"}])[0];//      {color:"#00CC00",colorword:"green"},{color:"#800080",colorword:"purple"},{color:"#808080",colorword:"gray"}])[0];//
-    var bcolor = _.shuffle([{color:"#E60000",colorword:"red"},{color:"#FF9147",colorword:"orange"}])[0];//,{color:"#FF70DB",colorword:"pink"},{color:"#FFFF00",colorword:"yellow"},{color:"#8B4513",colorword:"brown"}])[0];
-
-    var shuffled = _.shuffle([acolor,bcolor]);
+    // Make it only black and white
+    var colors = ([{color:"#000000", colorword: "black"}, {color: "#FFFFFF", colorword: "white"}]);
+    var shuffled = _.shuffle(colors);
     color_target = shuffled[0];
     color_other = shuffled[1];
       
