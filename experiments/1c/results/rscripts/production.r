@@ -1,5 +1,5 @@
 theme_set(theme_bw(18))
-setwd("/Users/titlis/cogsci/projects/stanford/projects/woq/experiments/1b_free_production_describe/results")
+setwd("~/Dropbox/Tuebingen17SS/RA/woq/experiments/1c/results")
 source("rscripts/helpers.r")
 
 d = read.table(file="data/production.csv",sep=",", header=T)
@@ -88,14 +88,16 @@ gathered$n_total = as.factor(as.character(gathered$n_total))
 length(unique(gathered$Utterance))
 
 utts_describe = unique(gathered$Utterance)
-length(c(utts_describe,utts_howmany))
-length(unique(c(utts_describe,utts_howmany)))
-unique_utts_total = unique(c(utts_describe,utts_howmany))
-common_utts = intersect(utts_describe,utts_howmany)
-write.table(unique_utts_total,file="data/unique_utts_exps1a1b.txt",row.names=F,quote=F,col.names=F)
-write.table(utts_describe,file="data/unique_utts_exp1b_describe.txt",row.names=F,quote=F,col.names=F)
-write.table(utts_howmany,file="data/unique_utts_exp1a_howmany.txt",row.names=F,quote=F,col.names=F)
-write.table(sort(common_utts),file="data/utts_common_to_exps1a1b.txt",row.names=F,quote=F,col.names=F)
+
+# This part of code seems to be a comparison betwen 1a and 1b, which I'm not sure if can be carried out here.
+# length(c(utts_describe,utts_howmany))
+# length(unique(c(utts_describe,utts_howmany)))
+# unique_utts_total = unique(c(utts_describe,utts_howmany))
+# common_utts = intersect(utts_describe,utts_howmany)
+# write.table(unique_utts_total,file="data/unique_utts_exps1a1b.txt",row.names=F,quote=F,col.names=F)
+# write.table(utts_describe,file="data/unique_utts_exp1b_describe.txt",row.names=F,quote=F,col.names=F)
+# write.table(utts_howmany,file="data/unique_utts_exp1a_howmany.txt",row.names=F,quote=F,col.names=F)
+# write.table(sort(common_utts),file="data/utts_common_to_exps1a1b.txt",row.names=F,quote=F,col.names=F)
 
 
 ggplot(gathered, aes(x=Utterance,fill=n_total)) +
