@@ -54,11 +54,19 @@ ggplot(d, aes(enjoyment)) +
 
 d$response = tolower(d$response)
 d$response1 = sapply(strsplit(as.character(d$response),", "), "[", 1)
-d$response2 = sapply(strsplit(as.character(d$response),", "), "[", 2)
+d$response1 = gsub("\\[u''","NA",as.character(d$response1))
 d$response1 = gsub("\\[u'","",as.character(d$response1))
 d$response1 = as.factor(as.character(gsub("'","",as.character(d$response1))))
+
+d$response2 = sapply(strsplit(as.character(d$response),", "), "[", 2)
+d$response2 = gsub("u''","NA",as.character(d$response2))
 d$response2 = gsub("u'","",as.character(d$response2))
-d$response2 = as.factor(as.character(gsub("'\\]","",as.character(d$response2))))
+d$response2 = as.factor(as.character(gsub("'","",as.character(d$response2))))
+
+d$response3 = sapply(strsplit(as.character(d$response),", "), "[", 3)
+d$response3 = gsub("u''\\]","NA",as.character(d$response3))
+d$response3 = gsub("u'","",as.character(d$response3))
+d$response3 = as.factor(as.character(gsub("'\\]","",as.character(d$response3))))
 
 d$proportion = d$n_target/d$n_total
 d$proportion_binned = cut(d$proportion,c(-.0001,.0001,.1,.2,.3,.4,.499,.501,.6,.7,.8,.9,.999,1))
@@ -79,8 +87,8 @@ ggplot(d, aes(x=proportion)) +
 ggsave("graphs/proportion_dist.pdf")
 
 gathered = d %>% 
-  select(response1,response2,proportion_binned,n_total) %>%
-  gather(Order,Utterance,response1:response2,-proportion_binned,-n_total) 
+  select(response1,response2,response3,proportion_binned,n_total) %>%
+  gather(Order,Utterance,response1:response3,-proportion_binned,-n_total) 
 head(gathered)
 #gathered = as.factor(as.character(gathered))
 #gathered = gathered[order(gathered[,c("Count")],decreasing=T),]
@@ -119,6 +127,9 @@ ggplot(gathered, aes(x=Utterance)) +
 ggsave("graphs/utterance_dist_total.pdf",height=15,width=45)
 
 
+## MF: trying to inspect choices for particular conditions
+
+table(droplevels(filter(d, n_total == 25, n_target == 12)$response1))
 
 
 
