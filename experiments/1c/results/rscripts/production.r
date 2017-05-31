@@ -150,4 +150,4 @@ nrow(top)
 ggplot(top, aes(x=proportion,fill=factor(n_total))) +
   stat_count(width=.05) +
   facet_wrap(~Utterance)
-ggsave("graphs/top30.pdf",height=15,width=20)
+ggsave("graphs/top30.pdf",height=10,width=15)
