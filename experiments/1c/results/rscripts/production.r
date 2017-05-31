@@ -1,5 +1,6 @@
 theme_set(theme_bw(18))
 setwd("~/Dropbox/Tuebingen17SS/RA/woq/experiments/1c/results")
+setwd("~/cogsci/projects/stanford/projects/woq/experiments/1c/results")
 source("rscripts/helpers.r")
 
 d = read.table(file="data/production.csv",sep=",", header=T)
@@ -93,6 +94,7 @@ head(gathered)
 #gathered = as.factor(as.character(gathered))
 #gathered = gathered[order(gathered[,c("Count")],decreasing=T),]
 gathered$n_total = as.factor(as.character(gathered$n_total))
+gathered$Utterance = gsub("(^ +| +$)","",gathered$Utterance,perl=T)
 length(unique(gathered$Utterance))
 
 utts_describe = unique(gathered$Utterance)
@@ -129,37 +131,23 @@ ggsave("graphs/utterance_dist_total.pdf",height=15,width=45)
 
 ## MF: trying to inspect choices for particular conditions
 
-table(droplevels(filter(d, n_total == 25, n_target == 12)$response1))
+table(droplevels(filter(d, n_total == 10, n_target == 3)$response1))
 
+## JD : trying to get sense for the most frequently produced utterances (out of the 357 uniquely produced ones)
+gathered = d %>% 
+  select(response1,response2,response3,proportion,n_total) %>%
+  gather(Order,Utterance,response1:response3,-proportion,-n_total) 
+gathered$Utterance = gsub("(^ +| +$)","",gathered$Utterance,perl=T)
+length(unique(gathered$Utterance))
+sorted = as.data.frame(sort(table(gathered$Utterance),decreasing=T))
+head(sorted,60)
+top_alts = as.character(sorted$Var1[2:31])
+top_alts
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+top = droplevels(gathered[gathered$Utterance %in% top_alts,])
+top$Utterance = factor(x=as.character(top$Utterance, levels=top_alts))
+nrow(top)
+ggplot(top, aes(x=proportion,fill=factor(n_total))) +
+  stat_count(width=.05) +
+  facet_wrap(~Utterance)
+ggsave("graphs/top30.pdf",height=15,width=20)
