@@ -228,7 +228,10 @@ function make_slides(f) {
 // {after: function() { console.log("everything's loaded now") }}
 // )
 
-  var top30 = ["most","some","many","almost all","a few","all","half","few","less than half","a lot","none","several","the majority","about half","more than half","a majority","very few","less","a small amount","more","a couple","nearly all","majority","greater","not many","all visible","almost none","five","one","little"];
+  // var top30 = ["most","some","many","almost all","a few","all","half","few","less than half","a lot","none","several","the majority","about half","more than half","a majority","very few","less","a small amount","more","a couple","nearly all","majority","greater","not many","all visible","almost none","five","one","little"];
+
+  // Needed to clear out the number terms "five" and "one"
+  var top30 = ["most","some","many","almost all","a few","all","half","few","less than half","a lot","none","several","the majority","about half","more than half","a majority","very few","less","a small amount","more","a couple","nearly all","majority","greater","not many","all visible","almost none","little","minority","a good deal"];
 
   slides.i0 = slide({
     name: "i0",
@@ -252,7 +255,8 @@ function make_slides(f) {
 
     start: function () {
       // In this version we also need to prepare for the next trial right at the beginning.
-      this.prepare_next_trial();
+      // Needed this hack to get around the problem that at this time `this.stim` is undefined.
+      this.prepare_next_trial(exp.all_stims[0].n_target / exp.all_stims[0].n_total);
       $(".err").hide();
     },
 
@@ -275,15 +279,72 @@ function make_slides(f) {
 
     cur_selected: [],
 
-    prepare_next_trial: function() {
-      // Randomly select 10 words.
+    // Will need to shuffle the options.
+    // Function from https://stackoverflow.com/questions/6274339/how-can-i-shuffle-an-array
+    shuffle: function(a) {
+      var j, x, i;
+      for (i = a.length; i; i--) {
+        j = Math.floor(Math.random() * i);
+        x = a[i - 1];
+        a[i - 1] = a[j];
+        a[j] = x;
+      }
+    },
+
+    prepare_next_trial: function(proportion) {
       this.cur_selected = [];
+
+      // Here we get the most common word for this scenario.
+      var most_frequent = "";
+      // This parameter is used at the first slide.
+      var proportion = proportion? proportion: this.stim.n_target / this.stim.n_total;
+      if (proportion == 0) {
+        most_frequent = "none";
+      } else if (proportion <= 0.1) {
+        most_frequent = "few";
+      } else if (proportion <= 0.2) {
+        // "few" and "a few" have the same frequency in the previous results.
+        most_frequent = "a few";
+      } else if (proportion <= 0.3) {
+        most_frequent = "some";
+      } else if (proportion <= 0.4) {
+        most_frequent = "some";
+      } else if (proportion < 0.5) {
+        most_frequent = "some";
+      } else if (proportion == 0.5) {
+        most_frequent = "half";
+      } else if (proportion <= 0.6) {
+        most_frequent = "most";
+      } else if (proportion <= 0.7) {
+        most_frequent = "most";
+      } else if (proportion <= 0.8) {
+        most_frequent = "most";
+      } else if (proportion <= 0.9) {
+        most_frequent = "most";
+      } else if (proportion < 1) {
+        // "almost all" and "most" have the same frequency in the previous results.
+        most_frequent = "almost all";
+      } else if (proportion == 1) {
+        most_frequent = "all";
+      }
+
+      // Put the most frequent word in.
+      this.cur_selected.push(most_frequent);
+
+      // Randomly select 9 other words.
       var _tmp = top30.slice();
-      for (var count = 0; count < 10; count++) {
+      // First remove the previously determined most frequent word in this scenario.
+      var mfIndex = _tmp.indexOf(most_frequent);
+      if (mfIndex > -1) {
+        _tmp.splice(mfIndex, 1);
+      }
+      for (var count = 0; count < 9; count++) {
         var index = Math.floor(Math.random() * _tmp.length);
         var removed = _tmp.splice(index, 1);
         this.cur_selected.push(removed[0]);
       }
+
+      this.shuffle(this.cur_selected);
 
       // This step is fine.
       // console.log("Should have selected 10 words.");
