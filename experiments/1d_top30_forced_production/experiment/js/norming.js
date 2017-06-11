@@ -237,20 +237,22 @@ function make_slides(f) {
     }
   });
 
+  // Actually we don't seem to have used this slide in this version of the trial. The instructions are just simply at each page.
   slides.instructions = slide({
     name: "instructions",
     button: function () {
-      // Should it be here that I also put the prepare for next trial code?
-      // this.prepare_next_trial();
       exp.go(); //use exp.go() if and only if there is no "present" data.
     }
   });
 
+  // This is the body of the trial slides.
   slides.objecttrial = slide({
     name: "objecttrial",
     present: exp.all_stims,
 
     start: function () {
+      // In this version we also need to prepare for the next trial right at the beginning.
+      this.prepare_next_trial();
       $(".err").hide();
     },
 
@@ -284,8 +286,8 @@ function make_slides(f) {
       }
 
       // This step is fine.
-      console.log("Should have selected 10 words.");
-      console.log("The words are " + this.cur_selected);
+      // console.log("Should have selected 10 words.");
+      // console.log("The words are " + this.cur_selected);
 
       $(".option1").html(this.cur_selected[0]);
       $(".option2").html(this.cur_selected[1]);
@@ -298,16 +300,17 @@ function make_slides(f) {
       $(".option9").html(this.cur_selected[8]);
       $(".option10").html(this.cur_selected[9]);
 
-      $(".checkbox1").checked = false;
-      $(".checkbox2").checked = false;
-      $(".checkbox3").checked = false;
-      $(".checkbox4").checked = false;
-      $(".checkbox5").checked = false;
-      $(".checkbox6").checked = false;
-      $(".checkbox7").checked = false;
-      $(".checkbox8").checked = false;
-      $(".checkbox9").checked = false;
-      $(".checkbox10").checked = false;
+      // Note that jQuery class selector by default returns an array. You'll need to get to the first element in order to set its attribute.
+      $(".checkbox1")[0].checked = false;
+      $(".checkbox2")[0].checked = false;
+      $(".checkbox3")[0].checked = false;
+      $(".checkbox4")[0].checked = false;
+      $(".checkbox5")[0].checked = false;
+      $(".checkbox6")[0].checked = false;
+      $(".checkbox7")[0].checked = false;
+      $(".checkbox8")[0].checked = false;
+      $(".checkbox9")[0].checked = false;
+      $(".checkbox10")[0].checked = false;
       _stream.apply(this); //use exp.go() if and only if there is no "present" data.
     },
 
