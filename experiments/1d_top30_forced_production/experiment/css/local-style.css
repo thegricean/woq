@@ -18,7 +18,12 @@
 	font-style: italic;
 }
 
-/* Still doesn't look so well. Just leave it centered at the moment. */
-/*.checkbox-sentence {*/
-	/*text-align: left;*/
-/*}*/
+/* Left-align the options */
+.options-container {
+	margin-left: 250px;
+}
+
+.checkbox-sentence {
+	text-align: left;
+}
+
