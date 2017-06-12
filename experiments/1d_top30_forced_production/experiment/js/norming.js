@@ -254,9 +254,6 @@ function make_slides(f) {
     present: exp.all_stims,
 
     start: function () {
-      // In this version we also need to prepare for the next trial right at the beginning.
-      // Needed this hack to get around the problem that at this time `this.stim` is undefined.
-      this.prepare_next_trial(exp.all_stims[0].n_target / exp.all_stims[0].n_total);
       $(".err").hide();
     },
 
@@ -271,6 +268,8 @@ function make_slides(f) {
       $(".color-word").attr("style", "color:" + this.stim.color_target.color + "; background:lightgrey");
       $(".color-word").text(this.stim.color_target.colorword);
       draw("situation", this.stim.n_total, this.stim.n_target, this.stim.color_target.color, this.stim.color_other.color);
+
+      this.prepare_this_trial();
     },
 
     some_option_selected: function () {
@@ -291,13 +290,13 @@ function make_slides(f) {
       }
     },
 
-    prepare_next_trial: function(proportion) {
+    prepare_this_trial: function() {
       this.cur_selected = [];
 
       // Here we get the most common word for this scenario.
       var most_frequent = "";
       // This parameter is used at the first slide.
-      var proportion = proportion? proportion: this.stim.n_target / this.stim.n_total;
+      var proportion = this.stim.n_target / this.stim.n_total;
       if (proportion == 0) {
         most_frequent = "none";
       } else if (proportion <= 0.1) {
@@ -327,6 +326,8 @@ function make_slides(f) {
       } else if (proportion == 1) {
         most_frequent = "all";
       }
+      // console.log(proportion);
+      // console.log(most_frequent);
 
       // Put the most frequent word in.
       this.cur_selected.push(most_frequent);
@@ -372,7 +373,6 @@ function make_slides(f) {
       $(".checkbox8")[0].checked = false;
       $(".checkbox9")[0].checked = false;
       $(".checkbox10")[0].checked = false;
-      _stream.apply(this); //use exp.go() if and only if there is no "present" data.
     },
 
     get_selections: function() {
@@ -389,7 +389,7 @@ function make_slides(f) {
         selections.push($(".checkbox9").is(':checked'));
         selections.push($(".checkbox10").is(':checked'));
       }
-      console.log(selections);
+      // console.log(selections);
       return selections;
     },
 
@@ -406,8 +406,8 @@ function make_slides(f) {
         this.stim.response = response;
         $(".err").hide();
         this.log_responses();
-        // prepare for the next trial.
-        this.prepare_next_trial();
+        // Go to the next trial.
+        _stream.apply(this); //use exp.go() if and only if there is no "present" data.
       } else { // Some of the blanks are left empty.
         $(".err").show();
       }
