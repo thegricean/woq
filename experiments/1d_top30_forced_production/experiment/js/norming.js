@@ -265,7 +265,7 @@ function make_slides(f) {
       this.stim = stim;
       console.log(this.stim);
 
-      var blanksentence = "How would you describe the <strong>number of <span style='color:" + this.stim.color_target.color + "; background:lightgrey'>" + this.stim.color_target.colorword + "</span> dots</strong> to someone who has not seen the picture? <p> Please select at least one description.";
+      var blanksentence = "How would you describe the <strong>number of <span style='color:" + this.stim.color_target.color + "; background:lightgrey'>" + this.stim.color_target.colorword + "</span> dots</strong> to someone who has not seen the picture? <p>Please select all descriptions that fit.";
       //$("#contextsentence").html(contextsentence);
       $(".blanksentence").html(blanksentence);
       $(".color-word").attr("style", "color:" + this.stim.color_target.color + "; background:lightgrey");
