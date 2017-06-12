@@ -231,7 +231,7 @@ function make_slides(f) {
   // var top30 = ["most","some","many","almost all","a few","all","half","few","less than half","a lot","none","several","the majority","about half","more than half","a majority","very few","less","a small amount","more","a couple","nearly all","majority","greater","not many","all visible","almost none","five","one","little"];
 
   // Needed to clear out the number terms "five" and "one"
-  var top30 = ["most","some","many","almost all","a few","all","half","few","less than half","a lot","none","several","the majority","about half","more than half","a majority","very few","less","a small amount","more","a couple","nearly all","greater","not many","all visible","almost none","a good deal", "lots", "quite a few", "a minority"];
+  var top30 = ["most","some","many","almost all","a few","all","half","few","less than half","a lot","none","several","the majority","about half","more than half","a majority","very few","less","a small amount","more","a couple","nearly all","greater","not many","almost none","a good deal", "lots", "quite a few", "a minority", "a small percentage"];
 
   slides.i0 = slide({
     name: "i0",
