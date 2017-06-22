@@ -355,6 +355,15 @@ function make_slides(f) {
       for (index = 0; index < all_checkboxes.length; index++) {
         all_checkboxes[index].checked = false;
       }
+
+      var tick = function(index) {
+          all_checkboxes[index].checked == true ? all_checkboxes[index].checked = false : all_checkboxes[index].checked = true;
+        };
+
+      var all_texts = $(".option-whole-text");
+      for (index = 0; index < all_texts.length; index++) {
+        all_texts[index].onclick = tick.bind(this, index)
+      }
     },
 
     get_selections: function() {

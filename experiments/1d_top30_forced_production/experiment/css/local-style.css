@@ -18,12 +18,16 @@
 	font-style: italic;
 }
 
+.options-column {
+	display: inline-block;
+}
+
 .checkbox-sentence {
 	text-align: left;
 	/*margin: 10px 0px;*/
 	margin: 10px;
 }
 
-.options-column {
-	display: inline-block;
+.option-whole-text {
+	cursor: pointer;
 }
