@@ -222,12 +222,10 @@ function draw(id, n_total, n_target, tcolor, ocolor) {
 }
 
 function make_slides(f) {
-  var slides = {};
-// 	preload(
-// ["images/bathrobe.png","images/belt.jpg"],
-// {after: function() { console.log("everything's loaded now") }}
-// )
+  // Might make it a global variable. Anyways.
+  var num_options = 10;
 
+  var slides = {};
   // var top30 = ["most","some","many","almost all","a few","all","half","few","less than half","a lot","none","several","the majority","about half","more than half","a majority","very few","less","a small amount","more","a couple","nearly all","majority","greater","not many","all visible","almost none","five","one","little"];
 
   // Needed to clear out the number terms "five" and "one"
@@ -347,49 +345,24 @@ function make_slides(f) {
 
       this.shuffle(this.cur_selected);
 
-      // This step is fine.
-      // console.log("Should have selected 10 words.");
-      // console.log("The words are " + this.cur_selected);
+      // Hopefully simplification of the logic wouldn't go wrong.
+      var all_options = $(".option");
+      for (index = 0; index < all_options.length; index++) {
+        all_options[index].innerHTML = this.cur_selected[index];
+      }
 
-      $(".option1").html(this.cur_selected[0]);
-      $(".option2").html(this.cur_selected[1]);
-      $(".option3").html(this.cur_selected[2]);
-      $(".option4").html(this.cur_selected[3]);
-      $(".option5").html(this.cur_selected[4]);
-      $(".option6").html(this.cur_selected[5]);
-      $(".option7").html(this.cur_selected[6]);
-      $(".option8").html(this.cur_selected[7]);
-      $(".option9").html(this.cur_selected[8]);
-      $(".option10").html(this.cur_selected[9]);
-
-      // Note that jQuery class selector by default returns an array. You'll need to get to the first element in order to set its attribute.
-      $(".checkbox1")[0].checked = false;
-      $(".checkbox2")[0].checked = false;
-      $(".checkbox3")[0].checked = false;
-      $(".checkbox4")[0].checked = false;
-      $(".checkbox5")[0].checked = false;
-      $(".checkbox6")[0].checked = false;
-      $(".checkbox7")[0].checked = false;
-      $(".checkbox8")[0].checked = false;
-      $(".checkbox9")[0].checked = false;
-      $(".checkbox10")[0].checked = false;
+      var all_checkboxes = $(".checkbox");
+      for (index = 0; index < all_checkboxes.length; index++) {
+        all_checkboxes[index].checked = false;
+      }
     },
 
     get_selections: function() {
       selections = [];
-      for (var count = 0; count < 10; count++) {
-        selections.push($(".checkbox1").is(':checked'));
-        selections.push($(".checkbox2").is(':checked'));
-        selections.push($(".checkbox3").is(':checked'));
-        selections.push($(".checkbox4").is(':checked'));
-        selections.push($(".checkbox5").is(':checked'));
-        selections.push($(".checkbox6").is(':checked'));
-        selections.push($(".checkbox7").is(':checked'));
-        selections.push($(".checkbox8").is(':checked'));
-        selections.push($(".checkbox9").is(':checked'));
-        selections.push($(".checkbox10").is(':checked'));
+      all_checkboxes = $(".checkbox");
+      for (var index = 0; index < all_checkboxes.length; index++) {
+        selections.push(all_checkboxes[index].checked);
       }
-      // console.log(selections);
       return selections;
     },
 
@@ -468,7 +441,6 @@ function make_slides(f) {
 
 /// init ///
 function init() {
-
   // This function is called when the sequence of experiments is generated, further down in the init() function.
   function makeStim(i, n) {
     // Make it only black and white
