@@ -3,7 +3,9 @@ setwd("~/Dropbox/Tuebingen17SS/RA/woq/experiments/1d_top30_forced_production/res
 # setwd("~/cogsci/projects/stanford/projects/woq/experiments/1c/results")
 source("rscripts/helpers.r")
 
-d = read.table(file="data/1d-pilot.csv",sep=",", header=T)
+d1 = read.table(file="data/1d-pilot-5.csv",sep=",", header=T)
+d2 = read.table(file="data/1d-pilot-25.csv",sep=",", header=T)
+d = bind_rows(d1, d2) # This might not be exactly scientific since there is the possibility of duplicate participants? But anyways for this pilot let me do this first.
 head(d)
 nrow(d)
 summary(d)
@@ -154,17 +156,8 @@ length(unique(gathered$Utterance))
 
 utts_describe = unique(gathered$Utterance)
 
-# This part of code seems to be a comparison betwen 1a and 1b, which I'm not sure if can be carried out here.
-# length(c(utts_describe,utts_howmany))
-# length(unique(c(utts_describe,utts_howmany)))
-# unique_utts_total = unique(c(utts_describe,utts_howmany))
-# common_utts = intersect(utts_describe,utts_howmany)
-# write.table(unique_utts_total,file="data/unique_utts_exps1a1b.txt",row.names=F,quote=F,col.names=F)
-# write.table(utts_describe,file="data/unique_utts_exp1b_describe.txt",row.names=F,quote=F,col.names=F)
-# write.table(utts_howmany,file="data/unique_utts_exp1a_howmany.txt",row.names=F,quote=F,col.names=F)
-# write.table(sort(common_utts),file="data/utts_common_to_exps1a1b.txt",row.names=F,quote=F,col.names=F)
-
-
+# Didn't work
+# ggplot(gathered, aes(x=Utterance,fill=n_total), subset = .(!is.na(Utterance))) +
 ggplot(gathered, aes(x=Utterance,fill=n_total)) +
   stat_count(position="dodge") +
   facet_wrap(~proportion_binned,scales="free_x") +
