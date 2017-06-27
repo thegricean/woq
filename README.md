@@ -11,26 +11,36 @@ The plan
 
 -   figure out a general format that the data should be stored in (a csv file of some sort with certain mandatory column names and content presumably); create github repo where everything will be stored, including documentation, instructions, (anonymized) data, analysis scripts
 
-Immediate next steps
+
+Intermediate next steps
 ====================
 
-### Production
+### Collect data from English (and some others) for first cross-linguistic analysis
 
-Do only black & white!
+1. Repeat free generation study for English (3 possible utterances) with large number of participants
+2. Get the top 20 quantifiers mentioned
+3. Set up experiment in which:
+    - each trial presents a random scene and a random quantifier from the top 20
+    - participants rate whether sentence fits the scene
+4. Collect English data
+5. Translate to MTurk-able languages (with the help of colleagues/friends) and rerun for other languages
+    - Spanish, Chinese, German, French, Japanese, Polish, Russian ...?
 
-1. English production with sentence frame -- at least one completion; up to three
-	- keep initial instructions as they are
-	- question on each trial: 'How would you describe the number of black/white dots to someone who has not seen the picture? Please provide at least one description. A description can be more than one word long, but doesn't have to be. Please avoid the use of number expressions."
-	- use sentence fragment "____ of the dots are black/white."
-	
 
-2. Put together an MTurk survey targeted at native speakers of languages that aren't English and have them produce sentence frames like "X of the dots are blue" after a few practice trials with image-utterance pairs. Then ask: "is there a similar construction in your language? If so, what is it?" + comment box
+### Pilot availability of sentence frames in other languages
+
+1. Put together an MTurk survey targeted at native speakers of languages that aren't English and have them produce sentence frames like "X of the dots are blue" after a few practice trials with image-utterance pairs. Then ask: "is there a similar construction in your language? If so, what is it?" + comment box
 	1. Translate English sentence
 	2. Is there a construction in your language? If yes, what? If no, what are all the different constructions?
 
 
 
-3. English production with sentence frame and partial uncertainty (gray out 1/4, 1/2, 3/4)
+Possible continuations
+====================
+
+### Production
+
+1. English production with sentence frame and partial uncertainty (gray out 1/4, 1/2, 3/4)
 
 ### Comprehension
 
