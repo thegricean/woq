@@ -191,11 +191,13 @@ gathered$Utterance = gsub("(^ +| +$)","",gathered$Utterance,perl=T)
 length(unique(gathered$Utterance))
 sorted = as.data.frame(sort(table(gathered$Utterance),decreasing=T))
 head(sorted,60)
-top_alts = as.character(sorted$Var1[2:31])
+top_alts = as.character(sorted$Var1[2:nrow(sorted)])
 top_alts
 
-top = droplevels(gathered[gathered$Utterance %in% top_alts,])
+top = gathered
 top$Utterance = factor(x=as.character(top$Utterance, levels=top_alts))
+top = subset(top, !is.na(Utterance))
+top[] <- lapply(top, function(x) if(is.factor(x)) factor(x) else x)
 nrow(top)
 ggplot(top, aes(x=proportion,fill=factor(n_total))) +
   stat_count(width=.05) +
