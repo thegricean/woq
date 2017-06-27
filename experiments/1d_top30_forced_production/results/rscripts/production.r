@@ -147,17 +147,18 @@ gathered = d %>%
   # select(response1,response2,response3,proportion_binned,n_total) %>%
   select(response1,response2,response3,response4,response5,response6,response7,response8,response9,response10,proportion_binned,n_total) %>%
   gather(Order,Utterance,response1:response10,-proportion_binned,-n_total) 
+
+# Drop the NA here.
+gathered = subset(gathered, !is.na(Utterance))
+gathered[] <- lapply(gathered, function(x) if(is.factor(x)) factor(x) else x)
+
 head(gathered)
-#gathered = as.factor(as.character(gathered))
-#gathered = gathered[order(gathered[,c("Count")],decreasing=T),]
 gathered$n_total = as.factor(as.character(gathered$n_total))
 gathered$Utterance = gsub("(^ +| +$)","",gathered$Utterance,perl=T)
 length(unique(gathered$Utterance))
 
 utts_describe = unique(gathered$Utterance)
 
-# Didn't work
-# ggplot(gathered, aes(x=Utterance,fill=n_total), subset = .(!is.na(Utterance))) +
 ggplot(gathered, aes(x=Utterance,fill=n_total)) +
   stat_count(position="dodge") +
   facet_wrap(~proportion_binned,scales="free_x") +
