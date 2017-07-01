@@ -112,6 +112,33 @@ Let's start!
 
   </div>
 
+  <div class="slide" id="language_info">
+      <div class="long_form">
+          <!--Here to borrow the CSS style for subj_info_title-->
+          <div class="subj_info_title">Information about your native language</div>
+          <p class="info">Please answer the following questions.</p>
+          <p>What is your native language (name in English)?</p>
+          <input type="text" class="native-language-response language-info-response"/>
+          <p>What is your country of birth?</p>
+          <input type="text" class="country-of-birth-response language-info-response"/>
+          <p>What is your country of residence?</p>
+          <input type="text" class="country-of-residence-response language-info-response"/>
+          <p>What is your father's country of birth?</p>
+          <input type="text" class="father-cob-response language-info-response"/>
+          <p>What is your mother's country of birth?</p>
+          <input type="text" class="mother-cob-response language-info-response"/>
+          <p>Which language did you speak at home between 0-5 years?</p>
+          <input type="text" class="childhood-language-response language-info-response"/>
+          <p>Which language do you generally prefer?</p>
+          <input type="text" class="preferred-language-response language-info-response"/>
+
+          <p class="language-info-error">Please fill in the blanks.</p>
+
+          <br/>
+          <button onclick="_s.button()">Submit</button>
+      </div>
+  </div>
+
   <div class="slide"  id="subj_info">
     <div class="long_form">
       <div class="subj_info_title">Additional information</div>
@@ -142,9 +169,6 @@ Let's start!
           <label><option value="4"/>Hold a higher degree</label>
         </select>
       </p>
-
-      <p>Native Language: <input type="text" id="language"/></p>
-      <label>(the language(s) spoken at home when you were a child)</label>
 
       <p>Which other languages do you speak, if any? <input type="text" id="languages"/></p>
 

@@ -222,9 +222,6 @@ function draw(id, n_total, n_target, tcolor, ocolor) {
 }
 
 function make_slides(f) {
-  // Might make it a global variable. Anyways.
-  var num_options = 10;
-
   var slides = {};
   // var top30 = ["most","some","many","almost all","a few","all","half","few","less than half","a lot","none","several","the majority","about half","more than half","a majority","very few","less","a small amount","more","a couple","nearly all","majority","greater","not many","all visible","almost none","five","one","little"];
 
@@ -354,8 +351,45 @@ function make_slides(f) {
 
     log_responses: function () {
       exp.data_trials.push({
-        "response": this.stim.response
+        "slide_number_in_experiment": exp.phase,
+        "rt": Date.now() - _s.trial_start,
+        "response": this.stim.response,
+        "color_target": this.stim.color_target.colorword,
+        "color_other": this.stim.color_other.colorword,
+        "n_total": this.stim.n_total,
+        "n_target": this.stim.n_target,
+        "target_quantifier": this.stim.quantifier
       });
+    }
+  });
+
+  slides.language_info = slide({
+    name: "language_info",
+    start: function (e) {
+      $(".language-info-error").hide();
+    },
+    button: function () {
+      // var all_answered = false;
+      var all_responses = $(".language-info-response");
+      for (index = 0; index < all_responses.length; index++) {
+        // We're getting an HTML element directly here. We should use the value property to get the content.
+        if (all_responses[index].value.length <= 0) {
+          console.log("answer length <= 0");
+          $(".language-info-error").show();
+          return;
+        }
+      }
+      // else:
+      exp.language_data = {
+        country_of_birth: $(".country-of-birth-response").val(),
+        country_of_residence: $(".country-of-residence-response").val(),
+        native_language: $(".native-language-response").val(),
+        father_country_of_birth: $(".father-cob-response").val(),
+        mother_country_of_birth: $(".mother-cob-response").val(),
+        childhood_language: $(".childhood-language-response").val(),
+        preferred_language: $(".preferred-language-response").val()
+      };
+      exp.go();
     }
   });
 
@@ -364,7 +398,6 @@ function make_slides(f) {
     submit: function (e) {
       //if (e.preventDefault) e.preventDefault(); // I don't know what this means.
       exp.subj_data = {
-        language: $("#language").val(),
         languages: $("#languages").val(),
         count: $("#count").val(),
         enjoyment: $("#enjoyment").val(),
@@ -387,6 +420,7 @@ function make_slides(f) {
         "catch_trials": exp.catch_trials,
         "system": exp.system,
         "condition": exp.condition,
+        "language_information": exp.language_data,
         "subject_information": exp.subj_data,
         "time_in_minutes": (Date.now() - exp.startT) / 60000
       };
@@ -476,7 +510,7 @@ function init() {
     screenUW: exp.width
   };
   //blocks of the experiment:
-  exp.structure = ["i0", "example1", "example2", "example3", "example4", "question",'subj_info', 'thanks'];
+  exp.structure = ["i0", "example1", "example2", "example3", "example4", "question", "language_info", 'subj_info', 'thanks'];
   // exp.structure = ["i0", "examples", "question", "thanks"];
 
   exp.data_trials = [];
