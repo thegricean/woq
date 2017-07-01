@@ -484,8 +484,8 @@ function init() {
   // }
 
   // Let me manually make them here.
-  exp.all_stims.push(makeStim(50, 50, "all"));
-  exp.all_stims.push(makeStim(45, 50, "almost all"));
+  exp.all_stims.push(makeStim(100, 100, "all"));
+  exp.all_stims.push(makeStim(90, 100, "almost all"));
   exp.all_stims.push(makeStim(75, 100, "most"));
   exp.all_stims.push(makeStim(65, 100, "many"));
   exp.all_stims.push(makeStim(5, 10, "half"));
