@@ -16,13 +16,6 @@ function uniform(a, b) {
   return ( (Math.random() * (b - a)) + a );
 }
 
-function sampleMarblePosition(center, r) {
-  var sampledR = uniform(0, r);
-  var sampledTheta = uniform(0, Math.PI); //in radians
-  var point = {radius: sampledR, theta: sampledTheta};
-  return rect(point, center);
-}
-
 //convert to rectangular coordinates
 function rect(point, center) {
   var x = center.x + point.radius * Math.cos(point.theta);
@@ -118,58 +111,6 @@ function get25Points(n_total, n_target, tcolor, ocolor, w, h, radius) {
   return points;
 }
 
-function getPoints(n_total, n_target, tcolor, ocolor, w, h, radius) {
-  console.log("width: " + w);
-  console.log("height: " + h);
-  //var initpointlocations = getPointLocations(n_total),w,h;
-  var targetcolor = tcolor;//acolors[cnt].color;
-  var othercolor = ocolor;//bcolors[cnt].color;
-  var pointcolors = _.shuffle(fillArray(targetcolor, n_target).concat(fillArray(othercolor, n_total - n_target)));
-  //console.log(n_total,n_target)
-  //console.log(pointcolors);
-  var points = [];
-  var x = uniform(radius * 2, w - radius * 2);
-  var y = uniform(radius * 2, h - radius * 2);
-  points.push({x: x, y: y, color: pointcolors[0]});
-
-  for (var i = 1; i < n_total; i++) {
-    console.log(i);
-    var goodpointfound = false;
-    while (!goodpointfound) {
-      console.log(points);
-      //samp = sampleMarblePosition(initpointlocations[i],6);
-      var x = uniform(radius * 2, w - radius * 2);
-      var y = uniform(radius * 2, h - radius * 2);
-      console.log("x: " + x);
-      console.log("y: " + y);
-
-      var cnt = 0;
-      for (var p = 0; p < points.length; p++) {
-        console.log(Math.abs(points[p].x - x));
-        console.log(Math.abs(points[p].y - y));
-        // console.log(radius*4);
-        if (Math.abs(points[p].x - x) < radius * 1.5 || Math.abs(points[p].y - y) < radius * 1.5) {
-          break;
-          //console.log("increased cnt: "+cnt+" out of a total of "+points.length);
-        } else {
-          cnt++;
-        }
-      }
-      if (cnt == points.length) {
-        console.log("found a good point");
-        goodpointfound = true;
-        points.push({x: x, y: y, color: pointcolors[i]});
-      } else {
-        console.log("start over");
-      }
-    }
-  }
-
-  console.log(points);
-  console.log(n_total);
-  return points;
-}
-
 function draw(id, n_total, n_target, tcolor, ocolor) {
   var canvas = document.getElementById(id);
   canvas.style.background = "lightgrey"; // Useful in the case of black/white colors.
@@ -223,10 +164,6 @@ function draw(id, n_total, n_target, tcolor, ocolor) {
 
 function make_slides(f) {
   var slides = {};
-  // var top30 = ["most","some","many","almost all","a few","all","half","few","less than half","a lot","none","several","the majority","about half","more than half","a majority","very few","less","a small amount","more","a couple","nearly all","majority","greater","not many","all visible","almost none","five","one","little"];
-
-  // Needed to clear out the number terms "five" and "one"
-  var top30 = ["most","some","many","almost all","a few","all","half","few","less than half","a lot","none","several","the majority","about half","more than half","a majority","very few","less","a small amount","more","a couple","nearly all","greater","not many","almost none","a good deal", "lots", "quite a few", "a minority", "a small percentage"];
 
   slides.i0 = slide({
     name: "i0",
@@ -248,13 +185,11 @@ function make_slides(f) {
 
     start: function () {
       this.trial_start = Date.now();
-      draw("situation1", 50, 50, "#FFFFFF", "#000000");
+      draw("situation1", 100, 100, "#FFFFFF", "#000000");
     },
 
     // This is the "Continue" button.
     button: function () {
-      // // Go to the next trial.
-      // _stream.apply(this); //use exp.go() if and only if there is no "present" data.
       exp.go(); //use exp.go() if and only if there is no "present" data.
     },
   });
@@ -270,8 +205,6 @@ function make_slides(f) {
 
     // This is the "Continue" button.
     button: function () {
-      // // Go to the next trial.
-      // _stream.apply(this); //use exp.go() if and only if there is no "present" data.
       exp.go(); //use exp.go() if and only if there is no "present" data.
     },
   });
@@ -287,8 +220,6 @@ function make_slides(f) {
 
     // This is the "Continue" button.
     button: function () {
-      // // Go to the next trial.
-      // _stream.apply(this); //use exp.go() if and only if there is no "present" data.
       exp.go(); //use exp.go() if and only if there is no "present" data.
     },
   });
@@ -303,8 +234,6 @@ function make_slides(f) {
 
     // This is the "Continue" button.
     button: function () {
-      // // Go to the next trial.
-      // _stream.apply(this); //use exp.go() if and only if there is no "present" data.
       exp.go(); //use exp.go() if and only if there is no "present" data.
     },
   });
@@ -396,7 +325,6 @@ function make_slides(f) {
   slides.subj_info = slide({
     name: "subj_info",
     submit: function (e) {
-      //if (e.preventDefault) e.preventDefault(); // I don't know what this means.
       exp.subj_data = {
         languages: $("#languages").val(),
         count: $("#count").val(),
@@ -453,35 +381,7 @@ function init() {
     }
   }
 
-  function getIntervals(n) {
-    var random_ints = [];
-    switch (n) {
-      case 5:
-        random_ints = [0, 1, 2, 3, 4, 5];
-        break;
-      case 10:
-        random_ints = [getRandomInt(0, 3), getRandomInt(3, 5), getRandomInt(5, 7), getRandomInt(7, 9), getRandomInt(9, 11)];
-        break;
-      case 25:
-        random_ints = [getRandomInt(0, 6), getRandomInt(6, 11), getRandomInt(11, 16), getRandomInt(16, 21), getRandomInt(21, 26)];
-        break;
-      case 100:
-        random_ints = [getRandomInt(0, 11), getRandomInt(11, 21), getRandomInt(21, 31), getRandomInt(31, 41), getRandomInt(41, 51), getRandomInt(51, 61), getRandomInt(61, 71), getRandomInt(71, 81), getRandomInt(81, 91), getRandomInt(91, 101)];
-        break;
-    }
-    return random_ints;
-  }
-
   exp.all_stims = [];
-  // var n_totals = [5, 10, 25, 100];
-  // for (var n = 0; n < n_totals.length; n++) {
-  //   console.log(n_totals[n]);
-  //   var intervals = getIntervals(n_totals[n]);
-  //   console.log(intervals);
-  //   for (var i = 0; i < intervals.length; i++) {
-  //     exp.all_stims.push(makeStim(intervals[i], n_totals[n]));
-  //   }
-  // }
 
   // Let me manually make them here.
   exp.all_stims.push(makeStim(100, 100, "all"));
