@@ -517,7 +517,9 @@ function init() {
   //make corresponding slides:
   exp.slides = make_slides(exp);
 
-  exp.nQs = utils.get_exp_length(); //this does not work if there are stacks of stims (but does work for an experiment with this structure)
+  // exp.nQs = utils.get_exp_length(); //this does not work if there are stacks of stims (but does work for an experiment with this structure)
+  // The above code doesn't produce the correct result. Not sure why but I'll just manually specify it here.
+  exp.nQs = 16;
   //relies on structure and slides being defined
   $(".nQs").html(exp.nQs);
 
