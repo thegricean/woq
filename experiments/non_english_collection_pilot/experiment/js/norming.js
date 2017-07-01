@@ -248,14 +248,10 @@ function make_slides(f) {
 
   slides.example1 = slide({
     name: "example1",
-    present: exp.all_stims,
 
     start: function () {
-    },
-
-    present_handle: function (stim) {
       this.trial_start = Date.now();
-      draw("situation1", 100, 25, "#000000", "#FFFFFF");
+      draw("situation1", 50, 50, "#FFFFFF", "#000000");
     },
 
     // This is the "Continue" button.
@@ -271,11 +267,8 @@ function make_slides(f) {
     present: exp.all_stims,
 
     start: function () {
-    },
-
-    present_handle: function (stim) {
       this.trial_start = Date.now();
-      draw("situation2", 50, 50, "#FFFFFF", "#000000");
+      draw("situation2", 100, 75, "#FFFFFF", "#000000");
     },
 
     // This is the "Continue" button.
@@ -288,15 +281,12 @@ function make_slides(f) {
 
   slides.example3 = slide({
     name: "example3",
-    present: exp.all_stims,
 
     start: function () {
+      this.trial_start = Date.now();
+      draw("situation3", 100, 25, "#000000", "#FFFFFF");
     },
 
-    present_handle: function (stim) {
-      this.trial_start = Date.now();
-      draw("situation3", 10, 5, "#FFFFFF", "#000000");
-    },
 
     // This is the "Continue" button.
     button: function () {
@@ -308,12 +298,8 @@ function make_slides(f) {
 
   slides.example4 = slide({
     name: "example4",
-    // present: exp.all_stims,
 
     start: function () {
-    },
-
-    present_handle: function (stim) {
       this.trial_start = Date.now();
       draw("situation4", 10, 0, "#000000", "#FFFFFF");
     },
@@ -337,32 +323,38 @@ function make_slides(f) {
 
     present_handle: function (stim) {
       this.trial_start = Date.now();
-      // draw("", 0, 10, "#000000", "#FFFFFF");
       this.stim = stim;
+      console.log(this.stim);
+
+      var englishSentence = "&#64;" + this.stim.quantifier + "&#64;" + " of the dots are <span style='color:'" + this.stim.color_target.color + "; background:lightgrey'>" + this.stim.color_target.colorword + "</span>";
+      // var questionDesc = "How would you translate this description of the picture into your native language? Put @ (at signs) around the words that correspond to the underlined part in the English sentence.";
+
+      $(".englishSentence").html(englishSentence);
+      draw("situation", this.stim.n_total, this.stim.n_target, this.stim.color_target.color, this.stim.color_other.color);
+      $(".err-no-input").hide();
+      $(".err-no-quantifier").hide();
+      $(".response-input").val('');
     },
 
     // This is the "Continue" button.
     button: function () {
       var responseInput = $(".response-input").val();
-      var nativeLang = $(".native-lang").val();
-      if (responseInput.length <= 0 || nativeLang.length <= 0) {
+      if (responseInput.length <= 0) {
         $(".err-no-input").show();
-      } else if (responseInput.split("*").length - 1  <= 1 && (responseinput.indexOf("No") == -1 || responseinput.indexOf("no") == -1)) {
+      } else if (responseInput.split("@").length - 1  <= 1 && (responseInput.indexOf("No") == -1 || responseInput.indexOf("no") == -1)) {
         $(".err-no-quantifier").show();
       } else {
         this.stim.response = responseInput;
-        this.stim.nativeLang = nativeLang;
         this.log_responses();
         // Go to the next trial.
-        // _stream.apply(this); //use exp.go() if and only if there is no "present" data.
-        exp.go();
+        _stream.apply(this); //use exp.go() if and only if there is no "present" data.
+        // exp.go();
       }
     },
 
     log_responses: function () {
       exp.data_trials.push({
-        "response": this.stim.response,
-        "nativeLanguage": this.stim.nativeLang,
+        "response": this.stim.response
       });
     }
   });
@@ -410,20 +402,20 @@ function make_slides(f) {
 /// init ///
 function init() {
   // This function is called when the sequence of experiments is generated, further down in the init() function.
-  function makeStim(i, n) {
+  // Let me change it so that the actual quantifier we want in each scenario is also included.
+  function makeStim(i, n, quantifier) {
     // Make it only black and white
     var colors = ([{color: "#000000", colorword: "black"}, {color: "#FFFFFF", colorword: "white"}]);
     var shuffled = _.shuffle(colors);
     color_target = shuffled[0];
     color_other = shuffled[1];
 
-    // console.log("makeStim is called. The target color is " + color_target.colorword + ". The other color is " + color_other.colorword);
-
     return {
-      "n_total": n,
       "n_target": i,
+      "n_total": n,
       "color_target": color_target,
-      "color_other": color_other
+      "color_other": color_other,
+      "quantifier": quantifier
     }
   }
 
@@ -447,17 +439,30 @@ function init() {
   }
 
   exp.all_stims = [];
-  var n_totals = [5, 10, 25, 100];
-  for (var n = 0; n < n_totals.length; n++) {
-    console.log(n_totals[n]);
-    var intervals = getIntervals(n_totals[n]);
-    console.log(intervals);
-    for (var i = 0; i < intervals.length; i++) {
-      exp.all_stims.push(makeStim(intervals[i], n_totals[n]));
-    }
-  }
+  // var n_totals = [5, 10, 25, 100];
+  // for (var n = 0; n < n_totals.length; n++) {
+  //   console.log(n_totals[n]);
+  //   var intervals = getIntervals(n_totals[n]);
+  //   console.log(intervals);
+  //   for (var i = 0; i < intervals.length; i++) {
+  //     exp.all_stims.push(makeStim(intervals[i], n_totals[n]));
+  //   }
+  // }
+
+  // Let me manually make them here.
+  exp.all_stims.push(makeStim(50, 50, "all"));
+  exp.all_stims.push(makeStim(45, 50, "almost all"));
+  exp.all_stims.push(makeStim(75, 100, "most"));
+  exp.all_stims.push(makeStim(65, 100, "many"));
+  exp.all_stims.push(makeStim(5, 10, "half"));
+  exp.all_stims.push(makeStim(4, 10, "less than half"));
+  exp.all_stims.push(makeStim(25, 100, "some"));
+  exp.all_stims.push(makeStim(3, 10, "a few"));
+  exp.all_stims.push(makeStim(2, 10, "two"));
+  exp.all_stims.push(makeStim(0, 10, "none"));
   exp.all_stims = _.shuffle(exp.all_stims);
 
+  console.log("Showing exp.all_stims");
   console.log(exp.all_stims);
   exp.trials = [];
   exp.catch_trials = [];

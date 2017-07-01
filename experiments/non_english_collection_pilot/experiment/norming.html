@@ -44,7 +44,15 @@
   <br>
     <!--<img src="../../_shared/images/cocologo.png" alt="Stanford CoCoLab" id="cocologo"></img> -->
     <!--<p id="cocolab">Stanford CoCoLab</p>-->
-    <p id="instruct-text">Thank you for participating in our study. In this study, you will see images of different situations and will be asked for brief descriptions of those situations. The whole experiment should take no longer than 15 minutes.
+    <p id="instruct-text">
+
+        <b>To be eligible to participate in this experiment, English CANNOT be your native language.</b>
+        <br/>
+        <br/>
+In this experiment we are interested in how languages other than English communicate about quantities. You'll start by seeing descriptions of displays in English. Then you'll provide translations of English sentences into your native language.
+        <br/>
+        <br/>
+Let's start!
     </p>
     <button id="start_button" type="button">Start Experiment</button>
     <p id="legal">Legal information: By answering the following
@@ -59,46 +67,46 @@
   <div class="slide" id="example1">
     <br><br>
     <canvas id="situation1" style="width:600px;height:400px"></canvas>
-    <p><i><u>Some</u></i> of the dots are <b><span class="color-word">black</span></b>.</p>
+      <p><i><u>All</u></i> of the dots are <b><span class="color-word", style="color: #FFFFFF;">white</span></b>.</p>
     <button onclick="_s.button()">Continue</button>
   </div>
 
   <div class="slide" id="example2">
     <br><br>
     <canvas id="situation2" style="width:600px;height:400px"></canvas>
-    <p><i><u>All</u></i> of the dots are <b><span class="color-word">white</span></b>.</p>
+      <p><i><u>Most</u></i> of the dots are <b><span class="color-word", style="color: #FFFFFF;">white</span></b>.</p>
     <button onclick="_s.button()">Continue</button>
   </div>
 
   <div class="slide" id="example3">
     <br><br>
     <canvas id="situation3" style="width:600px;height:400px"></canvas>
-    <p><i><u>Half</u></i> of the dots are <b><span class="color-word">white</span></b>.</p>
-    <button onclick="_s.button()">Continue</button>
+      <p><i><u>Some</u></i> of the dots are <b><span class="color-word", style="color: #000000;">black</span></b>.</p> <button onclick="_s.button()">Continue</button>
   </div>
 
   <div class="slide" id="example4">
     <br><br>
     <canvas id="situation4" style="width:600px;height:400px"></canvas>
-    <p><i><u>None</u></i> of the dots are <b><span class="color-word">black</span></b>.</p>
+    <p><i><u>None</u></i> of the dots are <b><span class="color-word", style="color: #000000;">black</span></b>.</p>
     <button onclick="_s.button()">Continue</button>
   </div>
 
   <div class="slide" id="question">
-    <br><br>
-   <p> Is there any similar construct in your language? If so, please write it below. If no, please write "No".<br>
-
-     Please indicate the word that would act as the quantifier with *, e.g. *All* of the dots are black. The word order doesn't have to be the same.</p>
-
-    <input type="text" class="response-input">
-
-    <p>What is your native language?</p>
-
-    <!-- Might also want to make it into a MC question to standarize data. Let's see. -->
-    <input type="text" class="native-lang">
+      <canvas id="situation" style="width:600px;height:400px"></canvas>
+      <p class="englishSentence"></p>
     <br>
+   <p> How would you translate this description of the picture into your native language? Put &#64; (at signs) around all the words that correspond to the marked phrase in the English sentence. </p>
+
+    <!--<input type="text" class="response-input" style="width:600px;height:50px"/>-->
+    <textarea class="response-input" cols="60"></textarea>
+
+    <!--<p>What is your native language (language name in English)?</p>-->
+
+    <!--&lt;!&ndash; Might also want to make it into a MC question to standarize data. Let's see. &ndash;&gt;-->
+    <!--<input type="text" class="native-lang">-->
+    <!--<br>-->
     <div class="err-no-input">Please fill in the blanks.</div>
-    <div class="err-no-quantifier">Please use * * around the quantifier to indicate it, or write "No".</div>
+    <div class="err-no-quantifier">Please use @ @ around the corresponding words to indicate them. It doesn't have to be a one-to-one correspondence; you may mark multiple words, if needed.</div>
     <br>
     <button onclick="_s.button()">Continue</button>
 
