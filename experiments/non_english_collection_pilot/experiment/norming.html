@@ -92,20 +92,35 @@ Let's start!
   </div>
 
   <div class="slide" id="question">
+      <br><br>
       <canvas id="situation" style="width:600px;height:400px"></canvas>
       <p class="englishSentence"></p>
-    <br>
       <p> How would you translate this description of the picture into your native language? Put &#64; (<i>at</i> signs) around each of the words that correspond to the marked phrase in the English sentence. </p>
 
+      <p>Please provide at least one translation.</p>
+
     <!--<input type="text" class="response-input" style="width:600px;height:50px"/>-->
-    <textarea class="response-input" cols="60"></textarea>
+      <!--<div>-->
+          <!--<textarea class="response-input response-input-1" cols="60"></textarea>-->
+      <!--</div>-->
+      <!--<div>-->
+          <!--<textarea class="response-input response-input-2" cols="60"></textarea>-->
+      <!--</div>-->
+      <!--<div>-->
+          <!--<textarea class="response-input response-input-3" cols="60"></textarea>-->
+      <!--</div>-->
+      <textarea class="response-input response-input-1" cols="60"></textarea>
+      <br><br>
+      <textarea class="response-input response-input-2" cols="60"></textarea>
+      <br><br>
+      <textarea class="response-input response-input-3" cols="60"></textarea>
 
     <!--<p>What is your native language (language name in English)?</p>-->
 
     <!--&lt;!&ndash; Might also want to make it into a MC question to standarize data. Let's see. &ndash;&gt;-->
     <!--<input type="text" class="native-lang">-->
     <!--<br>-->
-    <div class="err-no-input">Please fill in the blanks.</div>
+    <div class="err-no-input">Please fill in at least one textarea.</div>
     <div class="err-no-quantifier">Please use @ @ around the corresponding words to indicate them. It doesn't have to be a one-to-one correspondence; you may mark multiple words, if needed.</div>
     <br>
     <button onclick="_s.button()">Continue</button>
@@ -113,6 +128,7 @@ Let's start!
   </div>
 
   <div class="slide" id="language_info">
+      <br><br>
       <div class="long_form">
           <!--Here to borrow the CSS style for subj_info_title-->
           <div class="subj_info_title">Information about your native language</div>
@@ -140,6 +156,7 @@ Let's start!
   </div>
 
   <div class="slide"  id="subj_info">
+      <br><br>
     <div class="long_form">
       <div class="subj_info_title">Additional information</div>
       <p class="info">Answering these questions is optional, but will help us understand your answers.</p>

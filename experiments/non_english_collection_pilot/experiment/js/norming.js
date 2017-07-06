@@ -252,7 +252,7 @@ function make_slides(f) {
       this.stim = stim;
       console.log(this.stim);
 
-      var englishSentence = "&#64;" + this.stim.quantifier + "&#64;" + " of the dots are <span style='color:'" + this.stim.color_target.color + "; background:lightgrey'>" + this.stim.color_target.colorword + "</span>";
+      var englishSentence = "&#64;" + this.stim.quantifier + "&#64;" + " of the dots are <span style='color:'" + this.stim.color_target.color + "; background:lightgrey'>" + this.stim.color_target.colorword + "</span>.";
       // var questionDesc = "How would you translate this description of the picture into your native language? Put @ (at signs) around the words that correspond to the underlined part in the English sentence.";
 
       $(".englishSentence").html(englishSentence);
@@ -262,15 +262,30 @@ function make_slides(f) {
       $(".response-input").val('');
     },
 
+    validButNoAtSign: function(responseInput) {
+      return responseInput.length > 0 && (responseInput.split("@").length - 1  <= 1 && (responseInput.indexOf("No") == -1 || responseInput.indexOf("no") == -1));
+    },
+
     // This is the "Continue" button.
     button: function () {
-      var responseInput = $(".response-input").val();
-      if (responseInput.length <= 0) {
+      var responseInput1 = $(".response-input-1").val();
+      var responseInput2 = $(".response-input-2").val();
+      var responseInput3 = $(".response-input-3").val();
+      if (responseInput1.length <= 0 && responseInput2.length <= 0 && responseInput3.length <= 0) {
         $(".err-no-input").show();
-      } else if (responseInput.split("@").length - 1  <= 1 && (responseInput.indexOf("No") == -1 || responseInput.indexOf("no") == -1)) {
+      } else if (this.validButNoAtSign(responseInput1) || this.validButNoAtSign(responseInput2) || this.validButNoAtSign(responseInput3)) {
         $(".err-no-quantifier").show();
       } else {
-        this.stim.response = responseInput;
+        this.stim.response = [];
+        if (responseInput1.length > 0) {
+          this.stim.response.push(responseInput1);
+        }
+        if (responseInput2.length > 0) {
+          this.stim.response.push(responseInput2);
+        }
+        if (responseInput3.length > 0) {
+          this.stim.response.push(responseInput3);
+        }
         this.log_responses();
         // Go to the next trial.
         _stream.apply(this); //use exp.go() if and only if there is no "present" data.
@@ -389,7 +404,7 @@ function init() {
   exp.all_stims.push(makeStim(75, 100, "most"));
   exp.all_stims.push(makeStim(65, 100, "many"));
   exp.all_stims.push(makeStim(5, 10, "half"));
-  exp.all_stims.push(makeStim(4, 10, "less than half"));
+  exp.all_stims.push(makeStim(8, 25, "less than half"));
   exp.all_stims.push(makeStim(25, 100, "some"));
   exp.all_stims.push(makeStim(3, 10, "a few"));
   exp.all_stims.push(makeStim(2, 10, "two"));
