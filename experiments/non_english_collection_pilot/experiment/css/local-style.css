@@ -40,3 +40,11 @@
 	font-size: 16px;
 }
 
+button {
+	font-size: 16px;
+}
+
+.englishSentence {
+	/*font-family: sans-serif;*/
+	font-style: italic;
+}
