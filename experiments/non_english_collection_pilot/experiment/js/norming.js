@@ -260,6 +260,7 @@ function make_slides(f) {
       $(".err-no-input").hide();
       $(".err-no-quantifier").hide();
       $(".response-input").val('');
+      $(".response-input-1")[0].focus();
     },
 
     validButNoAtSign: function(responseInput) {
