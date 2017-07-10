@@ -314,17 +314,7 @@ function make_slides(f) {
       $(".language-info-error").hide();
     },
     button: function () {
-      // var all_answered = false;
-      var all_responses = $(".language-info-response");
-      for (index = 0; index < all_responses.length; index++) {
-        // We're getting an HTML element directly here. We should use the value property to get the content.
-        if (all_responses[index].value.length <= 0) {
-          console.log("answer length <= 0");
-          $(".language-info-error").show();
-          return;
-        }
-      }
-      // else:
+      // Let me just rewrite this... BitBallon is getting me crazy results by inserting <pre> elements on its own!
       exp.language_data = {
         country_of_birth: $(".country-of-birth-response").val(),
         country_of_residence: $(".country-of-residence-response").val(),
@@ -334,6 +324,15 @@ function make_slides(f) {
         childhood_language: $(".childhood-language-response").val(),
         preferred_language: $(".preferred-language-response").val()
       };
+      for (var response in exp.language_data) {
+        if (!exp.language_data.hasOwnProperty(response)) {
+          continue;
+        }
+        if (exp.language_data[response].length <= 0) {
+          $(".language-info-error").show();
+          return;
+        }
+      }
       exp.go();
     }
   });
