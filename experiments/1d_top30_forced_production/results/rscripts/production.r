@@ -6,7 +6,7 @@ source("rscripts/helpers.r")
 # d1 = read.table(file="data/1d-pilot-5.csv",sep=",", header=T)
 # d2 = read.table(file="data/1d-pilot-25.csv",sep=",", header=T)
 # d = bind_rows(d1, d2) # This might not be exactly scientific since there is the possibility of duplicate participants? But anyways for this pilot let me do this first.
-d = read.table(file="data/results-9.csv",sep=",",header=T)
+d = read.table(file="data/results-2.csv",sep=",",header=T)
 head(d)
 nrow(d)
 summary(d)
