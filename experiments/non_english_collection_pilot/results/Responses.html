@@ -1,0 +1,690 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2017-07-15 Sat 21:07 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title></title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="JI Xiang" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+  /*]]>*/-->
+</style>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2017 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org8d65346">1. Responses</a>
+<ul>
+<li><a href="#org6ee4a77">1.1. Arabic</a></li>
+<li><a href="#org9cd8ba7">1.2. Bengali</a></li>
+<li><a href="#org9d4d662">1.3. Finnish</a></li>
+<li><a href="#orgd8e500c">1.4. German</a></li>
+<li><a href="#org8c23794">1.5. Greek</a></li>
+<li><a href="#org769fc4f">1.6. Hindi</a></li>
+<li><a href="#org5417237">1.7. Macedonian</a></li>
+<li><a href="#orga9018d3">1.8. Portuguese</a></li>
+<li><a href="#org22173c3">1.9. Romanian</a></li>
+<li><a href="#org568ed1d">1.10. Russian</a></li>
+<li><a href="#org6b055cc">1.11. Spanish</a></li>
+<li><a href="#orgebc9b4b">1.12. Swedish</a></li>
+<li><a href="#org4908c63">1.13. Tagalog</a></li>
+<li><a href="#org9abdd4a">1.14. Tamil</a></li>
+<li><a href="#orgc14413d">1.15. Urdu</a></li>
+<li><a href="#orgd018d16">1.16. Yoruba</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org8d65346" class="outline-2">
+<h2 id="org8d65346"><span class="section-number-2">1</span> Responses</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+The responses are listed below. Each 10 response constitutes a group (from the same participant). They are sorted according to the following (alphabetical) order of the quantifier (Sorry, I should probably sort it according to a natural order the next time. I didn't realize it until it was done.):
+</p>
+<ul class="org-ul">
+<li>a few</li>
+<li>all</li>
+<li>almost all</li>
+<li>half</li>
+<li>less than half</li>
+<li>many</li>
+<li>most</li>
+<li>none</li>
+<li>some</li>
+<li>two</li>
+</ul>
+</div>
+<div id="outline-container-org6ee4a77" class="outline-3">
+<h3 id="org6ee4a77"><span class="section-number-3">1.1</span> Arabic</h3>
+<div class="outline-text-3" id="text-1-1">
+<ul class="org-ul">
+<li>[u'القليل@ من النقاط بيضاء@', u'قليل@ من النقط بيضاء@']</li>
+<li>[u'جميع@النقط سوداء@', u'كل@النقاط سوداء@']</li>
+<li>[uتقريبا كل@ النقاط بيضاء@]</li>
+<li>[uنصف@ النقاط سوداء@]</li>
+<li>[u'أقل من نصف@ النقط سوداء@', u'أقل من نصف@ النقاط لونها أسود@']</li>
+<li>[u'العديد@ من النقط سوداء@', u'العديد@ من النقاط سوداء@']</li>
+<li>[uمعظم@ النقاط سوداء@]</li>
+<li>[u'ولا واحدة@ من النقاط سوداء@', u'لا يوجد@ نقاط سوداء@']</li>
+<li>[u'بعض@ النقاط سوداء@', u'بعض@ النقط سوداء@']</li>
+<li>[u'اثنان@ من النقط سوداء@', u'اثنان@ من النقاط لونها أسود@']</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org9cd8ba7" class="outline-3">
+<h3 id="org9cd8ba7"><span class="section-number-3">1.2</span> Bengali</h3>
+<div class="outline-text-3" id="text-1-2">
+<ul class="org-ul">
+<li>[1] [u@kichu@ bindu kaalo ronger]</li>
+<li>[2] [u@sob@ bindu gulo sada ronger]</li>
+<li>[3] [u@prai sobgulo@ bindu e sada]</li>
+<li>[4] [u@ordhek@ dot gulo kaalo]</li>
+<li>[5] [u@oredhek er thekeo kom@ bindu sada ronger]</li>
+<li>[6] [u@onegulo@ bindu kaalo]</li>
+<li>[7] [u@beshir bhaag@ bindu e kaalo ronger]</li>
+<li>[8] [u'@ekta@ bindu o kaalo @noy@', u'@konotai@ kaalo @noy@']</li>
+<li>[9] [u@kichu@ bindu sada ronger]</li>
+</ul>
+<ul class="org-ul">
+<li>[10] [u@duto@ bindu sada]</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org9d4d662" class="outline-3">
+<h3 id="org9d4d662"><span class="section-number-3">1.3</span> Finnish</h3>
+<div class="outline-text-3" id="text-1-3">
+<ul class="org-ul">
+<li>@Muutama@ pisteistä on valkoisia</li>
+<li>@Kaikki@ pisteet ovat mustia</li>
+<li>@Suurin osa@ pisteistä on mustia, u@Melkein kaikki@ pisteet ovat mustia</li>
+<li>@Puolet@ pisteistä on mustia</li>
+<li>@Alle puolet@ pisteistä on mustia</li>
+<li>@Monet@ pisteistä ovat valkoisia</li>
+<li>@Suurin osa@ pisteistä on valkoisia, u@Melkein kaikki@ pisteet ovat valkoisia</li>
+<li>@Mitkään@ pisteistä eivät ole valkoisia</li>
+<li>@Osa@ pisteistä on mustia, u@Jotkut@ pisteistä ovat mustia</li>
+<li>@Kaksi@ pisteistä ovat mustia</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgd8e500c" class="outline-3">
+<h3 id="orgd8e500c"><span class="section-number-3">1.4</span> German</h3>
+<div class="outline-text-3" id="text-1-4">
+<ul class="org-ul">
+<li>[1] [u'@Ein paar@ der Punkte sind weiß.', u'@Einige@ der Punkte sind weiß.']</li>
+<li>[2] [u@Alle@ Punkte sind schwarz.]</li>
+<li>[3] [u'@Fast alle@ Punkte sind schwarz.', u'@Nahezu alle@ Punkte sind schwarz.']</li>
+<li>[4] [u@Die Hälfte@ der Punkte sind schwarz.]</li>
+<li>[5] [u@Weniger als die Hälfte@ der Punkte sind schwarz.]</li>
+<li>[6] [u@Viele@ Punkte sind schwarz.]</li>
+<li>[7] [uDie @meisten@ Punkte sind weiß.]</li>
+<li>[8] [u@Keine@ der Punkte sind schwarz.]</li>
+<li>[9] [u@Einige@ Punkte sind weiß.]</li>
+</ul>
+<ul class="org-ul">
+<li>[10] [u@Zwei@ Punkte sind schwarz.]</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org8c23794" class="outline-3">
+<h3 id="org8c23794"><span class="section-number-3">1.5</span> Greek</h3>
+<div class="outline-text-3" id="text-1-5">
+<ul class="org-ul">
+<li>[1] @λίγες@ από τις τελείες είναι μαύρες.</li>
+<li>[2] @όλες@ οι τελείες είναι μαύρες.</li>
+<li>[3] @σχεδόν όλες@ οι τελείες είναι μαύρες.</li>
+<li>[4] @οι μισές@ τελείες είναι μαύρες.</li>
+<li>[5] @λιγότερες από τις μισές@ τελείες είναι μαύρες.</li>
+<li>[6] @πολλές@ από τις τελείες είναι λευκές.</li>
+<li>[7] @οι περισσότερες@ από τις τελείες είναι μαύρες.</li>
+<li>[8] @καμία@ από τις τελείες δεν είναι μαύρη.</li>
+<li>[9] @μερικές@ από τις τελείες είναι μαύρες.</li>
+<li>[10] @δύο@ από τις τελείες είναι λεύκες.</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org769fc4f" class="outline-3">
+<h3 id="org769fc4f"><span class="section-number-3">1.6</span> Hindi</h3>
+<div class="outline-text-3" id="text-1-6">
+<ul class="org-ul">
+<li>[u@थोड़े@ बिंदु सफ़ेद है]</li>
+<li>[u@सब@ बिंदु काले हैं]</li>
+<li>[u@लगभग सभी@ बिंदु सफ़ेद हैं]</li>
+<li>[u@आधे@ बिंदु सफ़ेद है]</li>
+<li>[u@आधे से कम@ बिंदु सफ़ेद हैं]</li>
+<li>[u@काफ़ी@ बिंदु काले हैं]</li>
+<li>[u@ज्यादातर@ बिंदु काले हैं]</li>
+<li>[u@कोई भी नहीं@ बिंदु काला हैं]</li>
+<li>[u@कुछ@ बिंदु सफ़ेद हैं]</li>
+<li>[u@दो@ बिंदु काले हैं]</li>
+</ul>
+
+
+<ul class="org-ul">
+<li>[u@कुछ@ बिंदुएं काले हैं]</li>
+<li>[u@सभी@ बिंदुएं सफ़ेद हैं ]</li>
+<li>[u@लगभग सभी@ बिंदुएं सफ़ेद हैं ]</li>
+<li>[u@आधे@ डॉट्स काले हैं.]</li>
+<li>[u@आधे से कम@ काले बिंदुएं हैं ]</li>
+<li>[u@बहुत सारे@ बिंदुएं सफ़ेद हैं ]</li>
+<li>[u@अधिकांश@ बिंदुएं सफ़ेद हैं]</li>
+<li>[uसफ़ेद बिंदु @कोई भी नहीं@ है ]</li>
+<li>[u@कुछ@ बिंदुएं काले हैं]</li>
+<li>[uइन में  से केवल @दो@ सफ़ेद बिंदुएं है ]</li>
+</ul>
+
+
+<ul class="org-ul">
+<li>[uथोड़े@a few बिंदु@dots काले@black  है@are]</li>
+<li>[uसारे@all बिंदु@dots सफ़ेद@white  है@are]</li>
+<li>[uलगभग@almost सारे@all बिंदु@dots सफ़ेद@white  है@are]</li>
+<li>[uआधे@half बिंदु@dots सफ़ेद@white  है@are ]</li>
+<li>[uआधे से काम@less than half  बिंदु@dots सफ़ेद@white है@are ]</li>
+<li>[uबहुत सारे @many बिंदु@dots सफ़ेद@white है@are ]</li>
+<li>[uअधिकतर@most बिंदु@dots सफ़ेद@white  है@are]</li>
+<li>[uकोई भी@none बिंदु@dots सफ़ेद@white नहीं@not  है@are]</li>
+<li>[uकुछ@some बिंदु@dots सफ़ेद@white है@are]</li>
+<li>[uदो@two बिंदु@dots सफ़ेद@white  है@are ]</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org5417237" class="outline-3">
+<h3 id="org5417237"><span class="section-number-3">1.7</span> Macedonian</h3>
+<div class="outline-text-3" id="text-1-7">
+<ul class="org-ul">
+<li>[u@keli@ taškai yra juodi]</li>
+<li>[u@jokie@ taškai nėra juodi]</li>
+<li>[u@maųeiau nei pusė@ taškų yra juodi]</li>
+<li>[u@beveik visi@ taškai yra balti]</li>
+<li>[u@kai kurie@ taškai yra juodi.]</li>
+<li>[u@du@ taškai yra juodi.]</li>
+<li>[u@pusė@ taškų yra balti.]</li>
+<li>[u@dauguma@ taškų yra juodi.]</li>
+<li>[u@visi@ taškai yra balti.]</li>
+<li>[u@dauguma@ taškų yra balti.]</li>
+</ul>
+
+
+<ul class="org-ul">
+<li>[u@Неколку@ од точките се бели.]</li>
+<li>[u@Сите@ точки се црни.]</li>
+<li>[u@Речиси сите@ точки се бели.]</li>
+<li>[u@Половина@ од точките се бели.]</li>
+<li>[u@Помалку од половина@ од точките се бели.]</li>
+<li>[u@Многу@ од точките се црни.]</li>
+<li>[u@Повеќето@ од точките се бели.]</li>
+<li>[u@Ниедна@ од точките не е црна.]</li>
+<li>[u'@Неколку@ од точките се црни.', u'@Некои@ од точките се црни.']</li>
+<li>[u@Две@ од точките се бели.]</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orga9018d3" class="outline-3">
+<h3 id="orga9018d3"><span class="section-number-3">1.8</span> Portuguese</h3>
+<div class="outline-text-3" id="text-1-8">
+<ul class="org-ul">
+<li>[1] [u@alguns@ dos pontos são pretos]</li>
+<li>[2] [u@todos@ os pontos são pretos]</li>
+<li>[3] [u@quase todos@ os pontos são pretos]</li>
+<li>[4] [u@metade@ dos pontos são pretos]</li>
+<li>[5] [u@menos de metade@ dos pontos são brancos]</li>
+<li>[6] [u@muitos@ dos pontos são pretos]</li>
+<li>[7] [u@a maior parte@ dos pontos são pretos]</li>
+<li>[8] [u@nenhum@ dos pontos é preto]</li>
+<li>[9] [u@alguns@ dos pontos são pretos]</li>
+</ul>
+<ul class="org-ul">
+<li>[10] [u@dois@ dos pontos são pretos]</li>
+<li>[11] [u@alguns@ dos pontos são brancos]</li>
+<li>[12] [u@todos@ os pontos são brancos.]</li>
+<li>[13] [u@quase todos@ os pontos são pretos]</li>
+<li>[14] [u'@metade@ dos pontos são pretos.', u'@meia-parte@ dos pontos são pretos.']</li>
+<li>[15] [u'@menos que a metade@ dos pontos são pretos.', u'@a minoria@ dos pontos são pretos.']</li>
+<li>[16] [u'@muito@ dos pontos são pretos', u'@vários@ dos pontos são pretos']</li>
+<li>[17] [u@a maioria@ dos pontos são brancos.]</li>
+<li>[18] [u@nenhum@ dos pontos são pretos]</li>
+<li>[19] [u@alguns@ dos pontos são brancos]</li>
+<li>[20] [u'@dois@ dos pontos são brancos.', u'@uma dupla@ de pontos são brancos.', u'@um par@ de pontos são brancos.']</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org22173c3" class="outline-3">
+<h3 id="org22173c3"><span class="section-number-3">1.9</span> Romanian</h3>
+<div class="outline-text-3" id="text-1-9">
+<ul class="org-ul">
+<li>[1] [u@cateva@ dintre puncte sunt albe.]</li>
+<li>[2] [u@toate@ punctele sunt albe.]</li>
+<li>[3] [u@aproape toate@ punctele sunt albe.]</li>
+<li>[4] [u@jumatate@ dintre puncte sunt albe.]</li>
+<li>[5] [u@mai putin de jumatate@ din puncte sunt negre.]</li>
+<li>[6] [u@multe@ dintre puncte sunt albe.]</li>
+<li>[7] [u@majoritatea@ punctelor sunt negre.]</li>
+<li>[8] [u@niciunul@ dintre puncte nu sunt albe.]</li>
+<li>[9] [u@unele@ puncte sunt albe.]</li>
+</ul>
+<ul class="org-ul">
+<li>[10] [u@doua@ dintre puncte sunt negre.]</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org568ed1d" class="outline-3">
+<h3 id="org568ed1d"><span class="section-number-3">1.10</span> Russian</h3>
+<div class="outline-text-3" id="text-1-10">
+<ul class="org-ul">
+<li>[1] u@несколько@ точек белые, u@некоторые@ точки белые</li>
+<li>[2] u@все@ точки белые</li>
+<li>[3] u@почти все@ точки черные</li>
+<li>[4] u@половина@ точек черные</li>
+<li>[5] u@меньше половины@ точек черные, uчерных точек @меньше, чем половина@</li>
+<li>[6] u@много@ белых точек</li>
+<li>[7] u@большинство@ точек белые</li>
+<li>[8] u@нет@ белых точек</li>
+<li>[9] u@несколько@ точек черные, u@некоторые@ точки черные</li>
+<li>[10] u@две@ точки белые</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org6b055cc" class="outline-3">
+<h3 id="org6b055cc"><span class="section-number-3">1.11</span> Spanish</h3>
+<div class="outline-text-3" id="text-1-11">
+<ul class="org-ul">
+<li>[1] [u@unos pocos@ puntos son blancos.]</li>
+<li>[2] [u@todos@ los puntos son blancos.]</li>
+<li>[3] [u@casi todos@ los puntos son blancos.]</li>
+<li>[4] [ula @mitad@ de los puntos son blancos.]</li>
+<li>[5] [u@menos de la mitad@ de los puntos son blancos.]</li>
+<li>[6] [u@varios@ de los puntos son blancos.]</li>
+<li>[7] [ula @mayoria@ de los puntos son negros.]</li>
+<li>[8] [u@ninguno@ de los puntos son negros.]</li>
+<li>[9] [u@algunos@ de los puntos son blancos.]</li>
+</ul>
+<ul class="org-ul">
+<li>[10] [u@dos@ de los puntos son blancos.]</li>
+<li>[11] [u'@Unos pocos@ de los puntos son blancos', u'@Algunos@ puntos son blancos']</li>
+<li>[12] [u@Todos@ los puntos son negros]</li>
+<li>[13] [u'@Casi todos@ los puntos son negros', u'@La mayoría@ de los puntos son negros']</li>
+<li>[14] [u@la mitad@ de los puntos son blancos]</li>
+<li>[15] [u@Menos de la mitad @ de los puntos son negros]</li>
+<li>[16] [u'@muchos@ puntos son blancos', u'@varios@ puntos son blancos']</li>
+<li>[17] [u'@La mayoría@ de los puntos son blancos', u'@Casi todos@ los puntos son blancos']</li>
+<li>[18] [u@Ninguno@ de los puntos son negros]</li>
+<li>[19] [u@algunos@ puntos son negros]</li>
+<li>[20] [u@dos@ de los puntos son blancos]</li>
+<li>[21] [u@algunos@ de los puntos son blancos.]</li>
+<li>[22] [u@todos@ los puntos son blancos]</li>
+<li>[23] [u@casi todos@ los puntos son blancos.]</li>
+<li>[24] [u@la mitad@ de los puntos son negros.]</li>
+<li>[25] [u@menos de la mitad@ de los puntos son negros.]</li>
+<li>[26] [u@muchos@ de los puntos son blancos.]</li>
+<li>[27] [u@la mayoria@ de los puntos  son negros]</li>
+<li>[28] [u@ninguno@ de los puntos son blancos]</li>
+<li>[29] [u@algunos@ de los puntos son blancos.]</li>
+<li>[30] [u@dos@ de los puntos son blancos]</li>
+<li>[31] [u'@unos pocos@ de los puntos son blancos', u'@algunos@ de los puntos son blancos']</li>
+<li>[32] [u@todos@ los puntos son blancos]</li>
+<li>[33] [u@casi todos@ los puntos son blancos]</li>
+<li>[34] [u@la mitad@ de los puntos son negros]</li>
+<li>[35] [u@menos de la mitad@ de los puntos son blancos]</li>
+<li>[36] [u'@muchos@ de los puntos son negros', u'@demasiado@ de los puntos son negros']</li>
+<li>[37] [u'@la mayoria@ de los puntos son negros', u'@gran parte@ de los puntos son negros']</li>
+<li>[38] [u@ninguno@ de los puntos negros]</li>
+<li>[39] [u@algunos@ de los puntos son negros]</li>
+<li>[40] [u@dos@ de los puntos son negros]</li>
+<li>[41] [u'@unos pocos@ puntos son negros.', u'@poquitos@ puntos son negros.', u'@una pequeña cantidad@ de puntos son negros.']</li>
+<li>[42] [u'@todos@ los puntos son blancos', u'@el total@ de los puntos son blancos']</li>
+<li>[43] [u'@casi todos@ los puntos son negros', u'@la gran mayoria@ de los puntos son negros']</li>
+<li>[44] [u@la mitad@ de los puntos son blancos.]</li>
+<li>[45] [u@menos de la mitad@ de los puntos son negros]</li>
+<li>[46] [u'@muchos@ de los puntos son negros.', u'@la mayoria@ de los puntos son negros.']</li>
+<li>[47] [u'@La mayoria@ de los puntos son blancos.', u'@muchos@ de los puntos son blancos.']</li>
+<li>[48] [u'@ninguno@ de los puntos es blanco', u'@no@ hay puntos blancos']</li>
+<li>[49] [u'@Algunos@ de los puntos son blancos', u'@unos@ puntos son blancos', u'@pocos@ puntos son blancos']</li>
+<li>[50] [u'@dos@ puntos son negros', u'@un par@ de los puntos son negros']</li>
+<li>[51] [u@pocos@ puntos son blancos]</li>
+<li>[52] [u@todos@ los puntos son blancos]</li>
+<li>[53] [u@casi todos@ los puntos son blancos]</li>
+<li>[54] [u@la mitad@ de los puntos son negros]</li>
+<li>[55] [u@menos de la mitad@ de los puntos son negros]</li>
+<li>[56] [u@algunos@ de los puntos son blancos]</li>
+<li>[57] [u@la mayoría@ de los puntos son blancos]</li>
+<li>[58] [u@ninguno@ de los puntos es negro]</li>
+<li>[59] [u@algunos@ puntos son blancos]</li>
+<li>[60] [u'@dos@ de los puntos son blancos', u'Hay @dos@ puntos blancos']</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgebc9b4b" class="outline-3">
+<h3 id="orgebc9b4b"><span class="section-number-3">1.12</span> Swedish</h3>
+<div class="outline-text-3" id="text-1-12">
+<ul class="org-ul">
+<li>[1] [u@några@ av punkterna är vita.]</li>
+<li>[2] [u@alla@ punkterna är svarta.]</li>
+<li>[3] [u@nästan alla@ av punkterna är svarta.]</li>
+<li>[4] [u'@hälften@ av prickarna är svarta.', u'@hälften@ av punkterna är svarta.']</li>
+<li>[5] [u@mindre än hälften@ av punkterna är svarta.]</li>
+<li>[6] [u@många@ av punkterna är vita.]</li>
+<li>[7] [u@de flesta@ av punkterna är vita.]</li>
+<li>[8] [u@ingen@ av punkterna är svarta.]</li>
+<li>[9] [u@några@ av punkterna är vita.]</li>
+</ul>
+<ul class="org-ul">
+<li>[10] [u@två@ av punkterna är vita.]</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org4908c63" class="outline-3">
+<h3 id="org4908c63"><span class="section-number-3">1.13</span> Tagalog</h3>
+<div class="outline-text-3" id="text-1-13">
+<ul class="org-ul">
+<li>[1] [u'@Iilan@ sa mga tuldok ay itim.', u'@Iilan@ lamang sa mga tuldok ang itim.', u'@Iilan@ sa mga tuldok ay kulay itim.']</li>
+<li>[2] [u'@Lahat@ ng mga tuldok ay puti.', u'@Lahat@ ng mga tuldok ay kulay puti.', u'Puti ang @lahat@ng mga tuldok.']</li>
+<li>[3] [u'@Halos lahat@ ng mga tuldok ay puti.', u'@Halos lahat@ ng mga tuldok ay kulay puti.', u'Kulay puti ang @halos lahat@ ng mga tuldok.']</li>
+<li>[4] [u'@Kalahati@ ng mga tuldok ay puti.', u'@Kalahati@ ng mga tuldok ay kulay puti.', u'Kulay puti ang @kalahati@ ng mga tuldok.']</li>
+<li>[5] [u'@Mas mababa sa kalahati@ ng mga tuldok ay itim.', u'@Mas mababa sa kalahati@ ng mga tuldok ay kulay itim.', u'@Hindi lalampas ng kalahati@ ng mga tuldok ay kulay itim.']</li>
+<li>[6] [u'@Maraming@ mga tuldok ay puti.', u'@Karamihan@ sa mga tuldok ay puti.', u'Puti ang @karamihan@ sa mga tuldok.']</li>
+<li>[7] [u'@Karamihan@ sa mga tuldok ay puti.', u'@Karamihan@ sa mga tuldok ay kulay puti.', u'Puti ang @karamihan@ sa mga tuldok.']</li>
+<li>[8] [u'@Walang@ itim sa mga tuldok.', u'@Walang@ tuldok ay may kulay na itim.', u'@Wala@ sa mga tuldok ang itim.']</li>
+<li>[9] [u'@Ilan@ sa mga tuldok ay puti.', u'Puti ang @ilan@ sa mga tuldok.', u'@Ilan@ sa mga tuldok ay kulay puti.']</li>
+</ul>
+<ul class="org-ul">
+<li>[10] [u'@Dalawang@ tuldok ay kulay itim.', u'@Ang dalawang@ tuldok ay itim.', u'Kulay itim ang @dalawang@ tuldok.']</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org9abdd4a" class="outline-3">
+<h3 id="org9abdd4a"><span class="section-number-3">1.14</span> Tamil</h3>
+<div class="outline-text-3" id="text-1-14">
+<ul class="org-ul">
+<li>[1] [u@sila@ karuppu pulligal ullana]</li>
+<li>[2] [u'yella@all@ pulligalum@dots@ vellai@white@', u'@dot@Pulligal @all@yellam @white@Vellai']</li>
+<li>[3] [u'@kittathatta yellam@', u'@kittathatta yella@ pulligalum karuppu', u'@yerathaala yella@ pulligalum karuppu']</li>
+<li>[4] [u@paathi@ karuppu pulligal]</li>
+<li>[5] [ukaruppu pulligal @paathikkum kuraivu@]</li>
+<li>[6] [u'karuppu pulligal @neraya@ ullana', u'@neraya@ karuppu pulligal ullana', u'@athigam@ karuppu pulligal ullana']</li>
+<li>[7] [u'@athigam@ pulligal karuppu niram kondavai', u'karuppu niram konda pulligale @athigam@', u'karuppu pulligaley @jaasthi@']</li>
+<li>[8] [u'@yethuvum@ karuppu pulligal alla', u'@onrum@ karuppu pulligal alla']</li>
+<li>[9] [u'@sila@ vellai pulligal ullana', u'vellai pulligal @sila@ ullana']</li>
+</ul>
+<ul class="org-ul">
+<li>[10] [u'@irandu@ pulligal karuppu', u'karuppu pulligal @irandu@']</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgc14413d" class="outline-3">
+<h3 id="orgc14413d"><span class="section-number-3">1.15</span> Urdu</h3>
+<div class="outline-text-3" id="text-1-15">
+<ul class="org-ul">
+<li>تقریبا تمام@ نقطہ سفید ہیں@</li>
+<li>نصف@ نقطہ سفید ہیں@</li>
+<li>زیادہ@ نقطہ سیاہ ہیں@</li>
+<li>کچھ@ نقطہ سفید ہیں@</li>
+<li>بہت@ سے نقطہ سفید ہیں@</li>
+<li>دو@ نقطہ سفید ہیں@</li>
+<li>نصف سے کم@ نقطہ سفید ہیں@</li>
+<li>کوئی بھی@ نقطہ سیاہ @نہیں@ ہے@</li>
+<li>کچھ@ نقطہ سفید ہیں@</li>
+<li>تمام@ نقطہ سفید ہیں@</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgd018d16" class="outline-3">
+<h3 id="orgd018d16"><span class="section-number-3">1.16</span> Yoruba</h3>
+<div class="outline-text-3" id="text-1-16">
+<ul class="org-ul">
+<li>@kekere@ pele ni o je funfun</li>
+<li>@gbogbo@ pele je dudu</li>
+<li>laarin awon pele @diye ni oku ti gbogbo e@ ma je dudu</li>
+<li>laarin gbogbo pele @abo@ je funfun</li>
+<li>@ni awon pele ti owa abo je@ funfun</li>
+<li>@won po@ laarin pele ti o je funfun</li>
+<li>@diye ni o ku@ ti gbogbo pele fi je dudu</li>
+<li>@kosi@ pele kan ti o je funfun.</li>
+<li>@Awon@ pele kan je dudu</li>
+<li>@meji@ laarin pele ni o je funfun</li>
+</ul>
+
+
+<ul class="org-ul">
+<li>@die@ lara awon aami naa ni won je dudu.</li>
+<li>@gbogbo@ awon aami naa ni won je dudu.</li>
+<li>@o fere je gbogbo@ awon aami naa ni won je funfun.</li>
+<li>@idaji@ ninu awon aami naa ni won je dudu., @ilaji@ ninu awon aami naa ni won je dudu., @idaji@ ninu awon aami wonyi ni won je dudu.</li>
+<li>@ko to idaji@ ninu awon aami naa ti won je dudu.</li>
+<li>@opolopo@ awon aami naa ni won je dudu.</li>
+<li>@o fere je@ gbogbo awon aami naa ni won je dudu</li>
+<li>@okankan@ ninu awon aami naa ko je funfun., @ko si@ eyiti o je funfun ninu won aami naa.</li>
+<li>@awon kan@ lara awon aami naa je dudu.</li>
+<li>@meji@ ninu awon aami naa ni won je dudu., @meji@ ninu awon aami wonyi ni won je dudu.</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: JI Xiang</p>
+<p class="date">Created: 2017-07-15 Sat 21:07</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>
