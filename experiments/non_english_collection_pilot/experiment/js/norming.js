@@ -363,9 +363,16 @@ function make_slides(f) {
         "catch_trials": exp.catch_trials,
         "system": exp.system,
         "condition": exp.condition,
-        "language_information": exp.language_data,
+        // "language_information": exp.language_data,
         "subject_information": exp.subj_data,
-        "time_in_minutes": (Date.now() - exp.startT) / 60000
+        "time_in_minutes": (Date.now() - exp.startT) / 60000,
+        "country_of_birth" : exp.language_data.country_of_birth,
+        "country_of_residence" : exp.language_data.country_of_residence,
+        "native_language" : exp.language_data.native_language,
+        "father_country_of_birth" : exp.language_data.father_country_of_birth,
+        "mother_country_of_birth" : exp.language_data.mother_country_of_birth,
+        "childhood_language" : exp.language_data.childhood_language,
+        "preferred_language" : exp.language_data.preferred_language
       };
       setTimeout(function () {
         turk.submit(exp.data);
