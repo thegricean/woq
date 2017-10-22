@@ -272,9 +272,10 @@ function make_slides(f) {
     get_response: function() {
       if(document.getElementById('responseTrue').checked) {
         // Do I return a string or a boolean value?
-        return true;
+        // Apparently Submiterator has some issues with anything that is not string...
+        return "true";
       }else if(document.getElementById('responseFalse').checked) {
-        return false;
+        return "false";
       }
     },
 
