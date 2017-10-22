@@ -356,11 +356,11 @@ function init() {
   // Should add some listener/event handler on the True and False options.
   document.onkeydown = function(e) {
       e = e || window.event;
-      if (e.keyCode == 49 || e.keyCode == 84) {
+      if (e.keyCode == 65) {
         document.getElementById('responseTrue').checked = true;
         // Might not automatically advance for now, since it might make it too easy for the participant to skip it all.
         // _s.button();
-      } else if (e.keyCode == 50 || e.keyCode == 70) {
+      } else if (e.keyCode == 68) {
         document.getElementById('responseFalse').checked = true;
         // _s.button();
       } else if (e.keyCode == 13) {
@@ -368,9 +368,6 @@ function init() {
       }
   };
   // This function is called when the sequence of experiments is generated, further down in the init() function.
-  // Man... The naming of the parameters is really super unhelpful.
-  // i: The number of target dots
-  // n: The number of total dots
   function makeStim(num_target_dots, num_total_dots, target_quantifier) {
     // Make it only black and white
     var colors = ([{color: "#000000", colorword: "black"}, {color: "#FFFFFF", colorword: "white"}]);
@@ -390,14 +387,10 @@ function init() {
   }
 
   exp.all_stims = [];
+
+  // These two will be changeable.
   exp.language = "English";
   var num_dots = 25;
-
-  // In the offline update version, all the dots for a trial should be provided by the offline calculation.
-  // var all_trials = [10,5,70,75,80,50,60,45,30,25];
-  // for (var count = 0; count < all_trials.length; count++) {
-  //   exp.all_stims.push(makeStim(all_trials[count], num_dots))
-  // }
 
   var flat_prior = function(number_of_states) {
     var dist = Array(number_of_states)
@@ -406,7 +399,7 @@ function init() {
     }
     return dist
   }
-  // Or we should actually provide a probability distribution independently for each word, and let the `init` function generate the trial states at each participant. We should take care to make sure that there is no repeated states.
+
   var all_quantifiers = [
     "most",
     "some",
@@ -430,27 +423,26 @@ function init() {
     "nearly all"
   ]
 
-  // This is the ideal method (sampling) but let's do that later actually.
-  // var prob_dists = {};
-  // for (var count = 0; count < all_quantifiers.length; count++) {
-  //   var dist = flat_prior(num_dots)
-  //   prob_dists[all_quantifiers[count]] = dist
-  // }
-  // var all_trials = [];
-
-  // Let me just first manually generate all trials from a flat prior (Math.random) for a quick test.
+  // We should provide a probability distribution independently for each word, and let the `init` function generate the trial states at each participant. We should take care to make sure that there is no repeated states.
+  var prob_dists = {};
+  // Here I'm just giving it a flat prior. Later the probability distribution will be directly supplied from external computation (e.g. in R).
   for (var count = 0; count < all_quantifiers.length; count++) {
-    // Repeat 2 times
-    var s1 = Math.round(Math.random() * num_dots)
-    var s2 = Math.round(Math.random() * num_dots)
-    while (s2 === s1) {
-      s2 = Math.round(Math.random() * num_dots)
-    }
-    exp.all_stims.push(makeStim(s1, num_dots, all_quantifiers[count]))
-    exp.all_stims.push(makeStim(s2, num_dots, all_quantifiers[count]))
+    var dist = flat_prior(num_dots + 1);
+    prob_dists[all_quantifiers[count]] = dist;
   }
 
-  // This method determines the total number of trials by the number of intervals generated already. We probably won't use this method.
+  var all_trials = [];
+  for (var count = 0; count < all_quantifiers.length; count++) {
+    var dist = SJS.Discrete(prob_dists[all_quantifiers[count]]);
+    var s1 = dist.draw();
+    var s2 = dist.draw();
+    while (s2 === s1) {
+      s2 = dist.draw();
+    }
+    exp.all_stims.push(makeStim(s1, num_dots, all_quantifiers[count]));
+    exp.all_stims.push(makeStim(s2, num_dots, all_quantifiers[count]));
+  }
+
   exp.all_stims = _.shuffle(exp.all_stims);
 
   console.log(exp.all_stims);

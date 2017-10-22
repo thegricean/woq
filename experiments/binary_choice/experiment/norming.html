@@ -31,6 +31,8 @@
     <link href="../../_shared/css/cocolab-style.css" rel="stylesheet" type="text/css"/>
     <link href="css/local-style.css" rel="stylesheet" type="text/css"/>
 
+    <!-- Library for sampling -->
+    <script src="js/node_modules/discrete-sampling/dist/discrete.js"></script>
     <!-- experiment file -->
     <script src="js/norming.js"></script>
     
@@ -77,7 +79,7 @@
         <label for="responseFalse">Disagree</label>
       </div>
     </div>
-    <p>(Shortcuts: Press "1" to select "Agree"; press "2" to select "Disagree". Press "Enter" to continue.)</p>
+    <p>(Shortcuts: Press "a" to select "Agree"; press "d" to select "Disagree". Press "Enter" to continue.)</p>
     <button onclick="_s.button()">Continue</button>
     <div class="err">Please select an answer.</div>
   </div>
