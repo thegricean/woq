@@ -24,8 +24,6 @@ number_of_hypotheses = number_of_states * (number_of_states + 1) / 2
 # ground_truth = sapply(0:(number_of_states-1), function(i) ifelse(i <= 66 && i >= 33, 1-epsilon, epsilon))
 # qplot(0:(number_of_states-1), ground_truth)
 
-
-
 # Let me just extract the observations.
 results = rbind(d[,c("n_target", "response", "target_quantifier")], d2[,c("n_target", "response", "target_quantifier")])
 all_quantifiers = c(    "most",
@@ -92,7 +90,7 @@ initialize_prob_trials = function(num_states) {
   rep(0, times = num_states)
 }
 
-# Actually the dimension should still be 2D instead of 3D! It's just that the number of hypotheses increased. Eventually each cell of the matrix is still on the likelihood of observing this particular number of dots being considered "true" or "false" for this quantifier. Right.
+# One hypothesis is a pair of natural numbers which denote the lower bound and upper bound of this quantifier.
 initialize_hypothesis = function(number_of_states, epsilon, number_of_hypotheses) {
   hypotheses = matrix(epsilon, nrow = number_of_hypotheses, ncol = number_of_states)
   # Initialize the hypotheses space such that each hypothesis has its corresponding likelihood values set
@@ -165,6 +163,8 @@ for (q_index in 1:length(all_quantifiers)) {
 show(prob_trials)
 # Examine our current beliefs
 show(current_belief)
+# The belief distribution for "none"
+current_belief["none"][[1]]
 
 # I'll need to find a way to output the prob_trials to a format that will be easy for JS to parse.
 # Just find a way to output it to JSON.
