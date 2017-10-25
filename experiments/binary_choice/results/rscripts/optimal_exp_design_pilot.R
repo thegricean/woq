@@ -5,14 +5,29 @@ setwd("~/Dropbox/Tuebingen17SS/RA/woq/experiments/binary_choice/results")
 # setwd("~/cogsci/projects/stanford/projects/woq/experiments/binary_choice/results")
 source("rscripts/helpers.r")
 
-# First thing first is to obtain some sort of obseration counts.
+# First thing is to obtain some sort of obseration counts.
 
-d = read.table(file="data/binary-choice-pilot.csv",sep=",", header=T)
+d = read.table(file="data/binary-choice-pilot-round-1.csv",sep=",", header=T)
+d2 = read.table(file="data/binary-choice-pilot-2.csv",sep=",", header=T)
 # look at turker comments
 unique(d$comments)
+unique(d2$comments)
+
+epsilon = 0.05
+# number_of_states: from 0 to 25
+number_of_states = 26
+# Because the upper bound cannot be lower than the lower bound, the pairs of (lower_bound, upper_bound) would be calculated in this way.
+number_of_hypotheses = number_of_states * (number_of_states + 1) / 2
+# Needs to subtract by 1 since the actual number of dots starts from 0.
+
+# We don't have any ground truth in real life.
+# ground_truth = sapply(0:(number_of_states-1), function(i) ifelse(i <= 66 && i >= 33, 1-epsilon, epsilon))
+# qplot(0:(number_of_states-1), ground_truth)
+
+
 
 # Let me just extract the observations.
-results = d[,c("n_target", "response", "target_quantifier")]
+results = rbind(d[,c("n_target", "response", "target_quantifier")], d2[,c("n_target", "response", "target_quantifier")])
 all_quantifiers = c(    "most",
                         "some",
                         "many",
@@ -54,18 +69,6 @@ for(i in 1:nrow(results)) {
   all_observations[target_quantifier][[1]][result_row$response,target_state + 1] = all_observations[target_quantifier][[1]][result_row$response,target_state + 1] + 1
 }
 
-epsilon = 0.05
-# number_of_states: from 0 to 25
-number_of_states = number_of_states
-# Because the upper bound cannot be lower than the lower bound, the pairs of (lower_bound, upper_bound) would be calculated in this way.
-number_of_hypotheses = number_of_states * (number_of_states + 1) / 2
-# Needs to subtract by 1 since the actual number of dots starts from 0.
-
-# We don't have any ground truth in real life.
-# ground_truth = sapply(0:(number_of_states-1), function(i) ifelse(i <= 66 && i >= 33, 1-epsilon, epsilon))
-# qplot(0:(number_of_states-1), ground_truth)
-
-
 # helper function: returns likelihood of observations
 # for an input matrix of observations
 get_likelihood = function(observations, hypotheses) {
@@ -80,8 +83,8 @@ get_likelihood = function(observations, hypotheses) {
 }
 
 # helper function: returns entropy of belief given observations
-get_entropy = function(observations) {
-  likelihood = get_likelihood(observations)
+get_entropy = function(observations, hypotheses) {
+  likelihood = get_likelihood(observations, hypotheses)
   - sum(log(likelihood) * likelihood)
 }
 
@@ -129,7 +132,7 @@ for (q_index in 1:length(all_quantifiers)) {
   # to store expected entropy difference in
   entropy_diff_expected = 0 
   # what do we currently believe about our hypotheses
-  lh_tmp = get_likelihood(observations)
+  lh_tmp = get_likelihood(observations, hypotheses)
   current_belief[current_quantifier][[1]] = lh_tmp
   entropy_tmp = - sum(log(lh_tmp) * lh_tmp)
   # sample an experimental trial
@@ -143,8 +146,8 @@ for (q_index in 1:length(all_quantifiers)) {
     # how likely do we think a "true" answer for trial i is?
     lh_hypothetical_true = sum(lh_tmp * hypotheses[,i])
     # what's the entropy difference after observations in trial i?
-    entropy_diff_false = abs(entropy_tmp - get_entropy(obs_tmp_false))
-    entropy_diff_true  = abs(entropy_tmp - get_entropy(obs_tmp_true))
+    entropy_diff_false = abs(entropy_tmp - get_entropy(obs_tmp_false, hypotheses))
+    entropy_diff_true  = abs(entropy_tmp - get_entropy(obs_tmp_true, hypotheses))
     # calculate expected entropy difference
     entropy_diff_expected[i] = (1-lh_hypothetical_true) * entropy_diff_false + 
       lh_hypothetical_true * entropy_diff_true
@@ -155,13 +158,14 @@ for (q_index in 1:length(all_quantifiers)) {
   # trial = sample(1:number_of_states, size = 1, prob = prob_trial)
   prob_trials[current_quantifier][[1]] = prob_trial
   # There is only one round of experiment, so no need to further sub-index this thing.
-  entropy_opt = get_entropy(observations)
+  entropy_opt = get_entropy(observations, hypotheses)
+  # show(mean(entropy_opt))
 }
 
-show(mean(entropy_opt))
 show(prob_trials)
+# Examine our current beliefs
 show(current_belief)
 
 # I'll need to find a way to output the prob_trials to a format that will be easy for JS to parse.
 # Just find a way to output it to JSON.
-jsonlite::write_json(prob_trials, "../prob_trials_round_2.json")
+jsonlite::write_json(prob_trials, "../prob_trials_for_round_3.json")
