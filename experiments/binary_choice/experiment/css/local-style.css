@@ -31,3 +31,7 @@
 .option-whole-text {
 	cursor: pointer;
 }
+
+#duplicate-note {
+	font-size: 0.8em;
+}
