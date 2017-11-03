@@ -8,10 +8,12 @@ source("rscripts/helpers.r")
 # First thing is to obtain some sort of obseration counts.
 
 d = read.table(file="data/binary-choice-pilot-round-1.csv",sep=",", header=T)
-d2 = read.table(file="data/binary-choice-pilot-2.csv",sep=",", header=T)
+d2 = read.table(file="data/binary-choice-pilot-round-2.csv",sep=",", header=T)
+d3 = read.table(file="data/binary-choice-pilot-round-3.csv",sep=",", header=T)
 # look at turker comments
 unique(d$comments)
 unique(d2$comments)
+unique(d3$comments)
 
 epsilon = 0.05
 # number_of_states: from 0 to 25
@@ -25,7 +27,7 @@ number_of_hypotheses = number_of_states * (number_of_states + 1) / 2
 # qplot(0:(number_of_states-1), ground_truth)
 
 # Let me just extract the observations.
-results = rbind(d[,c("n_target", "response", "target_quantifier")], d2[,c("n_target", "response", "target_quantifier")])
+results = rbind(d[,c("n_target", "response", "target_quantifier")], d2[,c("n_target", "response", "target_quantifier")], d3[,c("n_target", "response", "target_quantifier")])
 all_quantifiers = c(    "most",
                         "some",
                         "many",
@@ -105,14 +107,41 @@ initialize_hypothesis = function(number_of_states, epsilon, number_of_hypotheses
   hypotheses
 }
 
+# We want to plot the marginal probability of each state being the lower bound/the upper bound for each quantifier.
+# For each state, we'll iterate through all the hypotheses, find the hypotheses whose lower bound is this state, and add up their probabilities.
+# We can use two colors to represent lower/upper bounds, respectively.
+visualize_belief = function(current_belief, num_states) {
+  acc_probabilities_lower_bound =  rep(0, times = num_states)
+  acc_probabilities_upper_bound =  rep(0, times = num_states)
+  hypothesis_index = 0
+  for (lower_bound in 1:number_of_states) {
+    for (upper_bound in lower_bound:number_of_states) {
+      # This hypothesis_index should correspond to the probabilities stored in the variable current_belief.
+      hypothesis_index = hypothesis_index + 1
+      # hypotheses[hypothesis_index, lower_bound:upper_bound] = 1 - epsilon
+      acc_probabilities_lower_bound[lower_bound] = acc_probabilities_lower_bound[lower_bound] + current_belief[hypothesis_index]
+      acc_probabilities_upper_bound[upper_bound] = acc_probabilities_upper_bound[upper_bound] + current_belief[hypothesis_index]
+    }
+  }
+  show(acc_probabilities_lower_bound)
+  show(acc_probabilities_upper_bound)
+}
+
+visualize_beliefs = function(current_beliefs, num_states) {
+  for (quantifier in names(current_beliefs)) {
+    show(quantifier)
+    visualize_belief(current_beliefs[[quantifier]], num_states)
+  }
+}
+
 entropy_opt = 0
 prob_trials = rep(number_of_states, times = 20)
 prob_trials = lapply(prob_trials, initialize_prob_trials)
 names(prob_trials) = all_quantifiers
 
-current_belief = rep(number_of_states, times = 20)
-current_belief = lapply(current_belief, initialize_prob_trials)
-names(current_belief) = all_quantifiers
+current_beliefs = rep(number_of_states, times = 20)
+current_beliefs = lapply(current_beliefs, initialize_prob_trials)
+names(current_beliefs) = all_quantifiers
 
 # In this way we can have different hypotheses for different quantifiers. Though currently we're using the same set set set hypothesis for all of them.
 all_hypotheses = rep(number_of_states, times = 20)
@@ -131,7 +160,7 @@ for (q_index in 1:length(all_quantifiers)) {
   entropy_diff_expected = 0 
   # what do we currently believe about our hypotheses
   lh_tmp = get_likelihood(observations, hypotheses)
-  current_belief[current_quantifier][[1]] = lh_tmp
+  current_beliefs[current_quantifier][[1]] = lh_tmp
   entropy_tmp = - sum(log(lh_tmp) * lh_tmp)
   # sample an experimental trial
   for (i in 1:number_of_states) {
@@ -153,6 +182,7 @@ for (q_index in 1:length(all_quantifiers)) {
     
   # Now we get the probabilities to generate the next set of trials. But then what about examining the probability distribution about the quantifier itself?
   prob_trial = exp(5*entropy_diff_expected) / sum(exp(5*entropy_diff_expected))
+  # Now we don't need to generate the trial right now. We only provide a probability distribution for the generation of trials online.
   # trial = sample(1:number_of_states, size = 1, prob = prob_trial)
   prob_trials[current_quantifier][[1]] = prob_trial
   # There is only one round of experiment, so no need to further sub-index this thing.
@@ -162,10 +192,8 @@ for (q_index in 1:length(all_quantifiers)) {
 
 show(prob_trials)
 # Examine our current beliefs
-show(current_belief)
-# The belief distribution for "none"
-current_belief["none"][[1]]
+visualize_beliefs(current_beliefs, num_states)
 
 # I'll need to find a way to output the prob_trials to a format that will be easy for JS to parse.
 # Just find a way to output it to JSON.
-jsonlite::write_json(prob_trials, "../prob_trials_for_round_3.json")
+jsonlite::write_json(prob_trials, "../prob_trials_for_round_4.json")
