@@ -1,4 +1,5 @@
 library(tidyverse)
+library(reshape2)
 
 theme_set(theme_bw(18))
 setwd("~/Dropbox/Tuebingen17SS/RA/woq/experiments/binary_choice/results")
@@ -10,24 +11,25 @@ source("rscripts/helpers.r")
 d = read.table(file="data/binary-choice-pilot-round-1.csv",sep=",", header=T)
 d2 = read.table(file="data/binary-choice-pilot-round-2.csv",sep=",", header=T)
 d3 = read.table(file="data/binary-choice-pilot-round-3.csv",sep=",", header=T)
+d4 = read.table(file="data/binary-choice-pilot-round-4.csv",sep=",", header=T)
 # look at turker comments
 unique(d$comments)
 unique(d2$comments)
 unique(d3$comments)
+unique(d4$comments)
 
 epsilon = 0.05
 # number_of_states: from 0 to 25
 number_of_states = 26
 # Because the upper bound cannot be lower than the lower bound, the pairs of (lower_bound, upper_bound) would be calculated in this way.
 number_of_hypotheses = number_of_states * (number_of_states + 1) / 2
-# Needs to subtract by 1 since the actual number of dots starts from 0.
 
 # We don't have any ground truth in real life.
 # ground_truth = sapply(0:(number_of_states-1), function(i) ifelse(i <= 66 && i >= 33, 1-epsilon, epsilon))
 # qplot(0:(number_of_states-1), ground_truth)
 
 # Let me just extract the observations.
-results = rbind(d[,c("n_target", "response", "target_quantifier")], d2[,c("n_target", "response", "target_quantifier")], d3[,c("n_target", "response", "target_quantifier")])
+results = rbind(d[,c("n_target", "response", "target_quantifier")], d2[,c("n_target", "response", "target_quantifier")], d3[,c("n_target", "response", "target_quantifier")], d4[,c("n_target", "response", "target_quantifier")])
 all_quantifiers = c(    "most",
                         "some",
                         "many",
@@ -107,33 +109,6 @@ initialize_hypothesis = function(number_of_states, epsilon, number_of_hypotheses
   hypotheses
 }
 
-# We want to plot the marginal probability of each state being the lower bound/the upper bound for each quantifier.
-# For each state, we'll iterate through all the hypotheses, find the hypotheses whose lower bound is this state, and add up their probabilities.
-# We can use two colors to represent lower/upper bounds, respectively.
-visualize_belief = function(current_belief, num_states) {
-  acc_probabilities_lower_bound =  rep(0, times = num_states)
-  acc_probabilities_upper_bound =  rep(0, times = num_states)
-  hypothesis_index = 0
-  for (lower_bound in 1:number_of_states) {
-    for (upper_bound in lower_bound:number_of_states) {
-      # This hypothesis_index should correspond to the probabilities stored in the variable current_belief.
-      hypothesis_index = hypothesis_index + 1
-      # hypotheses[hypothesis_index, lower_bound:upper_bound] = 1 - epsilon
-      acc_probabilities_lower_bound[lower_bound] = acc_probabilities_lower_bound[lower_bound] + current_belief[hypothesis_index]
-      acc_probabilities_upper_bound[upper_bound] = acc_probabilities_upper_bound[upper_bound] + current_belief[hypothesis_index]
-    }
-  }
-  show(acc_probabilities_lower_bound)
-  show(acc_probabilities_upper_bound)
-}
-
-visualize_beliefs = function(current_beliefs, num_states) {
-  for (quantifier in names(current_beliefs)) {
-    show(quantifier)
-    visualize_belief(current_beliefs[[quantifier]], num_states)
-  }
-}
-
 entropy_opt = 0
 prob_trials = rep(number_of_states, times = 20)
 prob_trials = lapply(prob_trials, initialize_prob_trials)
@@ -191,9 +166,50 @@ for (q_index in 1:length(all_quantifiers)) {
 }
 
 show(prob_trials)
-# Examine our current beliefs
-visualize_beliefs(current_beliefs, num_states)
 
 # I'll need to find a way to output the prob_trials to a format that will be easy for JS to parse.
-# Just find a way to output it to JSON.
-jsonlite::write_json(prob_trials, "../prob_trials_for_round_4.json")
+# Just find a way to output it to JSON then.
+jsonlite::write_json(prob_trials, "../prob_trials_for_round_5.json")
+
+# This is the function to visualize our current belief for one quantifier.
+# We want to plot the marginal probability of each state being the lower bound/the upper bound for each quantifier.
+# For each state, we'll iterate through all the hypotheses, find the hypotheses whose lower bound is this state, and add up their probabilities.
+# We can use two colors to represent lower/upper bounds, respectively.
+visualize_belief = function(current_belief, num_states, current_quantifier) {
+  acc_probs_lower_bound =  rep(0, times = num_states)
+  acc_probs_upper_bound =  rep(0, times = num_states)
+  hypothesis_index = 0
+  for (lower_bound in 1:number_of_states) {
+    for (upper_bound in lower_bound:number_of_states) {
+      # This hypothesis_index should correspond to the probs stored in the variable current_belief.
+      hypothesis_index = hypothesis_index + 1
+      acc_probs_lower_bound[lower_bound] = acc_probs_lower_bound[lower_bound] + current_belief[hypothesis_index]
+      acc_probs_upper_bound[upper_bound] = acc_probs_upper_bound[upper_bound] + current_belief[hypothesis_index]
+    }
+  }
+  acc_probs_lower_bound = acc_probs_lower_bound / sum(acc_probs_lower_bound)
+  acc_probs_upper_bound = acc_probs_upper_bound / sum(acc_probs_upper_bound)
+  
+  # This is all very convoluted just to plot them with geom_col... There is definitely an easier way to go about it?
+  acc_probs = cbind(acc_probs_lower_bound, acc_probs_upper_bound)
+  acc_probs = rownames_to_column(data.frame(acc_probs), var = "state")
+  # Minus one because our bounds start from 0
+  acc_probs$state = as.numeric(acc_probs$state) - 1
+  acc_probs = melt(acc_probs, id.vars = 'state')
+  p = ggplot(acc_probs, aes(x=state, y=value, fill=variable)) + geom_col(position = 'dodge') + guides(fill=FALSE) + ggtitle(current_quantifier) + scale_x_continuous(breaks=acc_probs$state)
+  p
+}
+
+# I gave up trying to put several graphs on the same page. Freely controlling how many graphs to put on one page seems insanely hard in ggplot/R land...
+visualize_beliefs = function(current_beliefs, num_states) {
+  pdf("graphs/beliefs.pdf")
+  for (quantifier in names(current_beliefs)) {
+    p = visualize_belief(current_beliefs[[quantifier]], num_states, quantifier)
+    print(p)
+  }
+  
+  dev.off()
+}
+
+# Examine our current beliefs
+visualize_beliefs(current_beliefs, number_of_states)
