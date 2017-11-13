@@ -12,6 +12,7 @@ d = read.table(file="data/binary-choice-pilot-round-1.csv",sep=",", header=T)
 d2 = read.table(file="data/binary-choice-pilot-round-2.csv",sep=",", header=T)
 d3 = read.table(file="data/binary-choice-pilot-round-3.csv",sep=",", header=T)
 d4 = read.table(file="data/binary-choice-pilot-round-4.csv",sep=",", header=T)
+
 # look at turker comments
 unique(d$comments)
 unique(d2$comments)
@@ -30,6 +31,10 @@ number_of_hypotheses = number_of_states * (number_of_states + 1) / 2
 
 # Let me just extract the observations.
 results = rbind(d[,c("n_target", "response", "target_quantifier")], d2[,c("n_target", "response", "target_quantifier")], d3[,c("n_target", "response", "target_quantifier")], d4[,c("n_target", "response", "target_quantifier")])
+
+# Now I run the inference on the naive version.
+# results = read.table(file="data/binary-choice-pilot-naive.csv",sep=",", header=T)
+
 all_quantifiers = c(    "most",
                         "some",
                         "many",
@@ -203,6 +208,7 @@ visualize_belief = function(current_belief, num_states, current_quantifier) {
 # I gave up trying to put several graphs on the same page. Freely controlling how many graphs to put on one page seems insanely hard in ggplot/R land...
 visualize_beliefs = function(current_beliefs, num_states) {
   pdf("graphs/beliefs.pdf")
+  # pdf("graphs/beliefs-naive.pdf")
   for (quantifier in names(current_beliefs)) {
     p = visualize_belief(current_beliefs[[quantifier]], num_states, quantifier)
     print(p)
