@@ -18,3 +18,7 @@
 	font-style: italic;
 }
 
+.slide {
+	/* The default doesn't work with Prolific's iframe... */
+	height: 800px;
+}

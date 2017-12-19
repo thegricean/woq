@@ -419,7 +419,7 @@ function make_slides(f) {
   slides.thanks = slide({
     name: "thanks",
     start: function () {
-      var completionPrompt = "Please click on <a href=" + exp.completionURL + ">" + exp.completionURL + "</a> to finish the study.";
+      var completionPrompt = "Please click on <a href=" + exp.completionURL + ">" + exp.completionURL + "</a> or copy the code to finish the study.";
       $(".completionPrompt").html(completionPrompt);
     }
   });
