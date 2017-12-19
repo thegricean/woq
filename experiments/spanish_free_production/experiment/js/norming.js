@@ -403,7 +403,7 @@ function make_slides(f) {
 /// init ///
 function init() {
   // Let me just put the completion url here anyways.
-  exp.completionURL = "https://www.prolific.ac/submissions/complete?cc=3MEHPVXL";
+  exp.completionURL = "https://www.prolific.ac/submissions/complete?cc=SOV608T1";
 
   document.onkeydown = function (e) {
     e = e || window.event;
