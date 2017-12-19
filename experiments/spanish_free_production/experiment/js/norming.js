@@ -323,6 +323,31 @@ function make_slides(f) {
     }
   });
 
+  slides.language_info = slide({
+    name: "language_info",
+    button: function () {
+      // Let me just rewrite this... BitBallon is getting me crazy results by inserting <pre> elements on its own!
+      exp.language_data = {
+        country_of_birth: $(".country-of-birth-response").val(),
+        country_of_residence: $(".country-of-residence-response").val(),
+        father_country_of_birth: $(".father-cob-response").val(),
+        mother_country_of_birth: $(".mother-cob-response").val(),
+        childhood_language: $(".childhood-language-response").val(),
+        preferred_language: $(".preferred-language-response").val()
+      };
+      for (var response in exp.language_data) {
+        if (!exp.language_data.hasOwnProperty(response)) {
+          continue;
+        }
+        if (exp.language_data[response].length <= 0) {
+          $(".language-info-error").show();
+          return;
+        }
+      }
+      exp.go();
+    }
+  });
+
   slides.subj_info = slide({
     name: "subj_info",
     submit: function (e) {
@@ -334,10 +359,11 @@ function make_slides(f) {
       exp.subj_data = {
         // This is not useful for now since we are targeting a specific native language.
         // language: $("#language").val(),
+        // This is already asked above.
+        // count: $("#count").val(),
         languages: $("#languages").val(),
-        count: $("#count").val(),
         enjoyment: $("#enjoyment").val(),
-        asses: $('input[name="assess"]:checked').val(),
+        assess: $('input[name="assess"]:checked').val(),
         age: $("#age").val(),
         gender: $("#gender").val(),
         education: $("#education").val(),
@@ -351,6 +377,7 @@ function make_slides(f) {
         "catch_trials": exp.catch_trials,
         "system": exp.system,
         "condition": exp.condition,
+        "language_information": exp.language_data,
         "subject_information": exp.subj_data,
         "time_in_minutes": (Date.now() - exp.startT) / 60000,
 
@@ -366,8 +393,8 @@ function make_slides(f) {
         // turk.submit(exp.data);
         $.ajax({
           type: 'POST',
-          url: 'https://procomprag.herokuapp.com/api/submit_experiment',
-          // url: 'http://localhost:4000/api/submit_experiment',
+          // url: 'https://procomprag.herokuapp.com/api/submit_experiment',
+          url: 'http://localhost:4000/api/submit_experiment',
           crossDomain: true,
           data: exp.data,
           success: function(responseData, textStatus, jqXHR) {
@@ -476,7 +503,7 @@ function init() {
     screenUW: exp.width
   };
   //blocks of the experiment:
-  exp.structure = ["i0", "prolificID", "objecttrial", 'subj_info', 'thanks'];
+  exp.structure = ["i0", "prolificID", "objecttrial", 'language_info', 'subj_info', 'thanks'];
 
   exp.data_trials = [];
   //make corresponding slides:
