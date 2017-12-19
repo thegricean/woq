@@ -362,8 +362,8 @@ function make_slides(f) {
         // turk.submit(exp.data);
         $.ajax({
           type: 'POST',
-          // url: 'https://procomprag.herokuapp.com/api/submit_experiment',
-          url: 'http://localhost:4000/api/submit_experiment',
+          url: 'https://procomprag.herokuapp.com/api/submit_experiment',
+          // url: 'http://localhost:4000/api/submit_experiment',
           crossDomain: true,
           data: exp.data,
           success: function(responseData, textStatus, jqXHR) {
