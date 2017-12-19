@@ -327,6 +327,10 @@ function make_slides(f) {
     name: "subj_info",
     submit: function (e) {
       //if (e.preventDefault) e.preventDefault(); // I don't know what this means.
+
+      // Tell the participant to wait instead of clicking the submit button multiple times, since it can take several seconds.
+      $(".submissionPrompt").show();
+
       exp.subj_data = {
         // This is not useful for now since we are targeting a specific native language.
         // language: $("#language").val(),
