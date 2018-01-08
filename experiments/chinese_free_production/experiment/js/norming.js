@@ -363,7 +363,7 @@ function make_slides(f) {
         // count: $("#count").val(),
         languages: $("#languages").val(),
         enjoyment: $("#enjoyment").val(),
-        assess: $('input[name="assess"]:checked').val(),
+        assess: $('input[name="assess"]:checked').length > 0 ? $('input[name="assess"]:checked').val() : "",
         age: $("#age").val(),
         gender: $("#gender").val(),
         education: $("#education").val(),

@@ -363,7 +363,8 @@ function make_slides(f) {
         // count: $("#count").val(),
         languages: $("#languages").val(),
         enjoyment: $("#enjoyment").val(),
-        assess: $('input[name="assess"]:checked').val(),
+        // For some reason if this item isn't checked then "assess" won't even exist (be `null`) ... This one is different from the others! This is quite bad and can simply create inconsistent data across several submissions for the same experiment.
+        assess: $('input[name="assess"]:checked').length > 0 ? $('input[name="assess"]:checked').val() : "",
         age: $("#age").val(),
         gender: $("#gender").val(),
         education: $("#education").val(),
